@@ -62,7 +62,7 @@ public class ProductInterfaceImpl implements ProductInterface
 						if (userType != null && userType.trim().equalsIgnoreCase("customer"))
 						{
 							parentjson = CommonMethodImpl.getCustDetailsByProperty(CommonMethodImpl.EMAIL_ID, email, parentjson, DBData);
-							sql = "update adds_user set active = 1 where email = ?";
+							sql = "update user set active = 1 where email = ?";
 							usertypecolumnname = "customer_key"; 
 						}
 						
@@ -208,9 +208,9 @@ public class ProductInterfaceImpl implements ProductInterface
 
 						if (userType != null && userType.trim().equalsIgnoreCase("customer"))
 						{
-							emailExist = "select email from adds_user";
-							sqlInsert = "insert into adds_user(email,phone,password,profile_img, video_count) values(?,?,?,?,?)";
-							user = "adds_user";
+							emailExist = "select email from user";
+							sqlInsert = "insert into user(email,phone,password,profile_img, video_count) values(?,?,?,?,?)";
+							user = "user";
 						}
 
 						ps = conn.prepareStatement(emailExist);
@@ -361,7 +361,7 @@ public class ProductInterfaceImpl implements ProductInterface
 							if (email != null && !email.trim().isEmpty())
 								parentjson = CommonMethodImpl.getCustDetailsByProperty(CommonMethodImpl.EMAIL_ID, email, parentjson, DBData);
 							
-							user = "adds_user";
+							user = "user";
 						}
 
 						if (parentjson != null && !parentjson.isEmpty())
@@ -459,7 +459,7 @@ public class ProductInterfaceImpl implements ProductInterface
 						{
 							if(userType.trim().equalsIgnoreCase("customer"))
 							{
-								sqlUpdate = "update adds_user set password = ? where email = ?";
+								sqlUpdate = "update user set password = ? where email = ?";
 							}
 							
 							String encryptedPwd = EncryptionUtility.encryptUsingMD5(normalPwd);
@@ -508,6 +508,111 @@ public class ProductInterfaceImpl implements ProductInterface
 						// ////System.out.println("output ::::::::: "+output);
 						return output;
 
+					}
+					catch (Exception e)
+					{
+						e.printStackTrace();
+						mms.writeLogs("ProductInterfaceImpl handleRequestResponse() "+command+" Exception : "+e,0);
+					}
+					break;
+					
+				case 1057: // -- Zone Details //
+					try
+					{
+						JSONObject object = (JSONObject) JSONValue.parse(jsonMsg);
+						
+						String  getZoneDetails = "", from = "", to = "";
+						
+						String zoneid = (String) object.get("zoneid");
+						String userType = (String) object.get("userType");
+						getZoneDetails = "select * from sales_promotion_expenses where import_date >= LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL 1 MONTH AND import_date < LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY";
+						ps = conn.prepareStatement(getZoneDetails);
+						rs = ps.executeQuery();
+						if(rs != null)
+						{
+							while (rs.next())
+							{
+								JSONObject childjson1 = new JSONObject();
+								childjson1.put("key", rs.getLong("sales_promotion_expenses_key"));
+								childjson1.put("state", rs.getString("state_ref"));
+								childjson1.put("city", rs.getString("city_ref"));
+								childjson1.put("tvcable", rs.getString("tv_cable"));
+								childjson1.put("radiofm", rs.getString("radio_fm"));
+								childjson1.put("newspapers", rs.getString("newspapers"));
+								childjson1.put("wallpaintings", rs.getString("wall_paintings"));
+								childjson1.put("dealerboards", rs.getString("dealer_boards"));
+								childjson1.put("pop", rs.getString("pop"));
+								childjson1.put("ctp", rs.getString("ctp"));
+								childjson1.put("dealermeets", rs.getString("dealer_meets"));
+								childjson1.put("vancampaign", rs.getString("van_campaign"));
+								childjson1.put("mandimelas", rs.getInt("mandi_melas"));
+								childjson1.put("stocklist", rs.getInt("stocklist"));
+								childjson1.put("subdealers", rs.getInt("subdealers"));
+								childjson1.put("giveaways", rs.getInt("give_aways"));
+								childjson1.put("misc", rs.getInt("misc"));
+								childjson1.put("importtime", rs.getString("import_time"));
+								childjson1.put("importdate", rs.getString("import_date"));
+								childjson1.put("total", rs.getFloat("total"));
+								
+								jsonarray1.add(childjson1);
+							}
+							
+							parentjson.put("zoneDetails", jsonarray1);
+							parentjson = CommonMethodImpl.putSuccessJson(parentjson, 2056);
+							
+						}
+						else
+						{
+							parentjson = CommonMethodImpl.putFailedJson(parentjson, command);
+							parentjson.put("statusdesc", "Error occurred during Fetching Data,Please try again");
+						}
+										
+						output = parentjson.toString();
+						// ////System.out.println("output ::::::::: "+output);
+						return output;
+						
+					}
+					catch (Exception e)
+					{
+						e.printStackTrace();
+						mms.writeLogs("ProductInterfaceImpl handleRequestResponse() "+command+" Exception : "+e,0);
+					}
+					break;
+					
+				case 1058: // -- Zone Details to filter //
+					try
+					{
+						JSONObject object = (JSONObject) JSONValue.parse(jsonMsg);
+						
+						String  getZoneDetails = "", from = "", to = "";
+						String  state_ref = "state_ref,", city_ref = "city_ref,", tv_cable = "tv_cable,", radio_fm = "radio_fm,", newspapers = "newspapers,", 
+								wall_paintings = "wall_paintings,", dealer_boards = "dealer_boards,", pop = "pop,", ctp = "ctp,", dealer_meets = "dealer_meets", 
+								van_campaign = "van_campaign", mandi_melas = "mandi_melas", stocklist = "stocklist", subdealers = "subdealers", 
+								give_aways = "give_aways", misc = "misc";
+						
+						String zoneid = (String) object.get("zoneid");
+						String userType = (String) object.get("userType");
+						getZoneDetails = "select sales_promotion_expenses_key,  total, import_date, import_time, "+
+								state_ref + city_ref + tv_cable + radio_fm + newspapers + wall_paintings + dealer_boards + pop + ctp + dealer_meets + van_campaign + mandi_melas + stocklist + subdealers + give_aways + misc+ 
+								"from sales_promotion_expenses where import_date between "+from+" and "+to;
+						
+						/*	
+								if(verification)
+									{
+										parentjson = CommonMethodImpl.putSuccessJson(parentjson + 2056);
+										mms.writeLogs("Email sending success",1);
+									}
+									else
+									{
+										parentjson = CommonMethodImpl.putFailedJson(parentjson, command);
+										parentjson.put("statusdesc", "Error occurred during sending email,Please try again");
+										mms.writeLogs("Email sending failed",0);
+									}
+						 */
+						output = parentjson.toString();
+						// ////System.out.println("output ::::::::: "+output);
+						return output;
+						
 					}
 					catch (Exception e)
 					{

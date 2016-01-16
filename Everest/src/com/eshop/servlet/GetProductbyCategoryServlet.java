@@ -150,9 +150,8 @@ public class GetProductbyCategoryServlet extends HttpServlet
 				String userType = (String) object.get("userType");
 				
 				session.removeAttribute("key");
-				session.removeAttribute("userType");
 				session.setAttribute("key", key);
-				session.setAttribute("userType", userType);
+				session.setAttribute("login", "login");
 				mms.writeLogs("Command : "+command+" JSON Msg for Login to store in session :  "+jsonMsg, 1);
 			}
 			

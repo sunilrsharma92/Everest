@@ -14,7 +14,7 @@ function handleAllListResponse(jsonMsg)
 			}
 			else
 			{
-				$(".overlay").show().delay(100).fadeOut();
+				$(".indexoverlay").show().delay(100).fadeOut();
 				$.confirm(
 				{
 				title : "Alert Message !",
@@ -64,16 +64,14 @@ function listResponseHandler(response, command, status)
 						handleForgetPasswordResponse(response);
 						break;
 					case 2055:
-						handleSaveUserDetailsResponse(response);
 						break;
 					case 2056:
 						handleResetPasswordResponse(response);
 						break;
 					case 2057:
-						handleNewVideosForAddsResponse(response);
+						zoneDetailsResponse(response);
 						break;
 					case 2058:
-						handleWalletUpdateResponse(response);
 						break;
 				}
 				break;

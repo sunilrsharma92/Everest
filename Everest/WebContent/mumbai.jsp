@@ -127,7 +127,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.jsp">
                     <img src="images/logo.jpg">
                 </a>
             </div>
@@ -135,25 +135,25 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="index.jsp">Home</a>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Zones <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="centralzone.html">Central Zone</a>
+                                <a href="centralzone.jsp">Central Zone</a>
                             </li>
                             <li>
-                                <a href="eastzone.html">East Zone</a>
+                                <a href="eastzone.jsp">East Zone</a>
                             </li>
                             <li>
-                                <a href="westzone.html">West Zone</a>
+                                <a href="westzone.jsp">West Zone</a>
                             </li>
                             <li>
-                                <a href="northzone.html">North Zone</a>
+                                <a href="northzone.jsp">North Zone</a>
                             </li>
                             <li>
-                                <a href="southzone.html">South Zone</a>
+                                <a href="southzone.jsp">South Zone</a>
                             </li>
                         </ul>
                     </li>
@@ -161,7 +161,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Activities <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="activity.html">Mass Media</a>
+                                <a href="activity.jsp">Mass Media</a>
                                 
                             </li>
                             <li>
@@ -179,10 +179,10 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="gallery.html">DataTable</a>
+                        <a href="gallery.jsp">DataTable</a>
                     </li>
                     <li>
-                        <a href="contact.html">Impact</a>
+                        <a href="contact.jsp">Impact</a>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Corporate Communication <b class="caret"></b></a>
@@ -218,7 +218,7 @@
                         </ul>
                     </li>
                     <li>
-                                <a href="help.html">Help</a>
+                                <a href="help.jsp">Help</a>
                     </li>
                 </ul>
             </div>
@@ -237,9 +237,9 @@
                     West Zone-Mumbai Everest Impact
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a>
+                    <li><a href="index.jsp">Home</a>
                     </li>
-                    <li><a href="index.html">West Zone</a>
+                    <li><a href="index.jsp">West Zone</a>
                     </li>
                     <li class="active">Mumbai</li>
                 </ol>

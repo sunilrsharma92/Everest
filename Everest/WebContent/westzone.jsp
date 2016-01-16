@@ -11,23 +11,6 @@
 
     <title>Everest Impact-West Zone</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/modern-business.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" href="js/jqx/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="js/bootstrap/jquery.js"></script>
-    
-    <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
-    <script type="text/javascript" src="js/jqx/jqxcore.js"></script>
-    <script type="text/javascript" src="js/jqx/jqxdata.js"></script>
-    <script type="text/javascript" src="js/jqx/jqxdraw.js"></script>
-    <script type="text/javascript" src="js/jqx/jqxchart.core.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             // prepare chart data as an array
@@ -115,119 +98,6 @@
 </head>
 
 <body>
-
-    <!-- Navigation -->
-<!--     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"> -->
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">
-                    <img src="images/logo.jpg">
-                </a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Zones <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="centralzone.html">Central Zone</a>
-                            </li>
-                            <li>
-                                <a href="eastzone.html">East Zone</a>
-                            </li>
-                            <li>
-                                <a href="westzone.html">West Zone</a>
-                            </li>
-                            <li>
-                                <a href="northzone.html">North Zone</a>
-                            </li>
-                            <li>
-                                <a href="southzone.html">South Zone</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Activities <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="activity.html">Mass Media</a>
-                                
-                            </li>
-                            <li>
-                                <a href="#">Shop Display</a>
-                            </li>
-                            <li>
-                                <a href="#">Direct Central Pgm</a>
-                            </li>
-                            <li>
-                                <a href="#">Schemes</a>
-                            </li>
-                            <li>
-                                <a href="#">Others</a>
-                            </li>
-                            
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="datatable.html">DataTable</a>
-                    </li>
-                    <li>
-                        <a href="impact.html">Impact</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Corporate Communication <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">Product Brochures</a>
-                            </li>
-                            <li>
-                                <a href="#">Brand Manual</a>
-                            </li>
-                            <li>
-                                <a href="#">Latest Companies</a>
-                            </li>
-                            <li>
-                                <a href="#">Poster</a>
-                            </li>
-                            <li>
-                                <a href="#">Exibition</a>
-                            </li>
-                        </ul>
-                    </li>
-                    
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        <li>
-                                <a href="#">Profile</a>
-                            </li>
-                            <li>
-                                <a href="#">Logout</a>
-                            </li>
-                            
-                        </ul>
-                    </li>
-                    <li>
-                                <a href="help.html">Help</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-    
     <!-- Page Content -->
     <div class="container">
 
@@ -238,58 +108,13 @@
                     West Zone Everest Impact
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a>
+                    <li><a href="index.jsp">Home</a>
                     </li>
                     <li class="active">West Zone</li>
                 </ol>
             </div>
             </div>
         <!-- /.row -->
-
-<div class="row">
-   <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <img src="images/rsz_slide2 (1).jpg" >
-        <h4 align="center">This is header</h4>
-        <p align="center">This is paragraph with description</p>
-      </div>
-
-      <div class="item">
-        <img src="images/rsz_slide4.jpg">
-        <h4 align="center">Kolhapur</h4>
-        <p align="center">Subdealer Conference</p>
-      </div>
-    
-      <div class="item">
-        <img src="images/rsz_slide3.jpg">
-        <h4 align="center">This is header</h4>
-        <p align="center">This is paragraph with description</p>
-      </div>
-
-      
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div>
 
         <div class="row" style="margin-top:10px; margin-bottom:10px">
             <h4><strong>Total Performance</strong></h4>
@@ -362,39 +187,6 @@
       
                 
             </div>
-</div>
-        <!-- Portfolio Section -->
-
-        <hr>
-<div class="container">
-    
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                   <p>Copyright &copy; Everest Impact 2015</p>
-                    
-                </div>
-            </div>
-        </footer>
-
-    </div>
-    <!-- /.container -->
-<div class="footer navbar-fixed-bottom" style="background-color:rgba(18, 106, 188, 0.71)">
-    <img src="images/footimg.jpg">
-    </div>
-    <!-- jQuery -->
-  
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-    </script>
 
 </body>
 

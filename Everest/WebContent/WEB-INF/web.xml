@@ -16,7 +16,7 @@
   </servlet-mapping>
   
   <welcome-file-list>
-    <welcome-file>Home.jsp</welcome-file>
+    <welcome-file>Login.jsp</welcome-file>
   </welcome-file-list>
   
   <!--   DBConnection details -->
@@ -24,7 +24,7 @@
   <context-param>
     <param-name>connection</param-name>
 <!--     <param-value>jdbc:mysql://localhost:3306/heenabou_shopprofile</param-value> -->
-    <param-value>jdbc:mysql://localhost:3306/shopprofile</param-value>
+    <param-value>jdbc:mysql://localhost:3306/everest_impact</param-value>
   </context-param>
   <context-param>
     <param-name>drivername</param-name>

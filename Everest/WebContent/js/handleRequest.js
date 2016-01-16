@@ -4,6 +4,7 @@ function handleRequest()
 	this.handleRegisteration = handleRegisteration;
 	this.handleResetPassword = handleResetPassword;
 	this.handleForgotPwd = handleForgotPwd;
+	this.getZoneDetailsRequest = getZoneDetailsRequest;
 	function handleLogin(emailLogin, passLogin, userType, otpLogin)
 	{
 		try
@@ -75,6 +76,21 @@ function handleRequest()
 		catch (e)
 		{
 			console.log("handleRequest handleResetPassword Exception ::" + e);
+		}
+	}
+	function getZoneDetailsRequest()
+	{
+		try
+		{
+			var getZoneDetails = {};
+			getZoneDetails.command = 1057;
+			var strJsonMsgForZoneDetails = JSON.stringify(getZoneDetails);
+			handleAllListResponse(strJsonMsgForZoneDetails);
+			console.log("handleRequest     getZoneDetailsRequest     strJsonMsgForResetPwd : " + strJsonMsgForZoneDetails);
+		}
+		catch (e)
+		{
+			console.log("handleRequest getZoneDetailsRequest Exception ::" + e);
 		}
 	}
 }

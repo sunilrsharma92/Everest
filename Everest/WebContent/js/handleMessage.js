@@ -46,6 +46,19 @@ function handleResetPasswordResponse(response)
 	}
 	$(".indexoverlay").show().delay(100).fadeOut();
 }
+function zoneDetailsResponse(response)
+{
+	var action = response.status;
+	var statusdesc = response.statusdesc;
+	if(action != 3)
+	{
+		jqueryconform("Message", statusdesc);
+	}
+	else
+	{
+	}
+	$(".indexoverlay").show().delay(100).fadeOut();
+}
 function handleLoginResponse(response)
 {
 	try
@@ -58,14 +71,14 @@ function handleLoginResponse(response)
 		var invalidOTP = "Invalid OTP. Please check your mail for the valid OTP";
 		if(action != 3)
 		{
-			$(".indexoverlay").show().delay(100).fadeOut();
+			$(".indexoverlay").hide();
 			jqueryconform("Message", statusdesc);
 		}
 		else
 		{
-			
+			location.replace("index.jsp");
 		}
-		$(".indexoverlay").show().delay(100).fadeOut();
+		$(".indexoverlay").hide();
 	}
 	catch (e)
 	{

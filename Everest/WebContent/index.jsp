@@ -10,21 +10,29 @@
     <meta name="author" content="">
 
     <title>Everest Impact</title>
-
+	<% 
+	if((String)session.getAttribute("login") == null)
+	{
+		response.sendRedirect("Login.jsp");
+	}
+	%>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/modern-business.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="js/jqueryConfirm/jquery-confirm.css">
+    <link rel="stylesheet" href="jqwidgets/css/jqx.base.css" type="text/css" />
     <link href="css/style.css" rel="stylesheet">
     
     <!-- jQuery -->
     <script src="js/bootstrap/jquery.js"></script>
-    <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
-	<script type="text/javascript" src="js/jquery.session.js"></script>
+    
 	
     </head>
 
 <body>
-
+	<div class="indexoverlay" style="margin-top: 17%;display:none;">
+	<div id="loading-img"></div>
+	</div>
     <!-- Navigation -->
      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -50,19 +58,19 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Zones <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="centralzone.jsp">Central Zone</a>
+                                <a href="#" onclick="loadPage('centralzone');">Central Zone</a>
                             </li>
                             <li>
-                                <a href="eastzone.jsp">East Zone</a>
+                                <a href="#" onclick="loadPage('eastzone');">East Zone</a>
                             </li>
                             <li>
-                                <a href="westzone.jsp">West Zone</a>
+                                <a href="#" onclick="loadPage('westzone');">West Zone</a>
                             </li>
                             <li>
-                                <a href="northzone.jsp">North Zone</a>
+                                <a href="#" onclick="loadPage('northzone');">North Zone</a>
                             </li>
                             <li>
-                                <a href="southzone.jsp">South Zone</a>
+                                <a href="#" onclick="loadPage('southzone');">South Zone</a>
                             </li>
                         </ul>
                     </li>
@@ -70,29 +78,29 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Activities <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="massmedia.jsp">Mass Media</a>
+                                <a href="#" onclick="loadPage('massmedia');">Mass Media</a>
                                 
                             </li>
                             <li>
-                                <a href="shopdisplay.jsp">Shop Display</a>
+                                <a href="#" onclick="loadPage('shopdisplay');">Shop Display</a>
                             </li>
                             <li>
-                                <a href="directcentral.jsp">Direct Central Pgm</a>
+                                <a href="#" onclick="loadPage('directcentral');">Direct Central Pgm</a>
                             </li>
                             <li>
-                                <a href="schemes.jsp">Schemes</a>
+                                <a href="#" onclick="loadPage('schemes');">Schemes</a>
                             </li>
                             <li>
-                                <a href="other.jsp">Others</a>
+                                <a href="#" onclick="loadPage('other');">Others</a>
                             </li>
                             
                         </ul>
                     </li>
                     <li>
-                        <a href="datatable.jsp">DataTable</a>
+                        <a href="#" onclick="loadPage('datatable');">DataTable</a>
                     </li>
                     <li>
-                        <a href="impact.jsp">Impact</a>
+                        <a href="#" onclick="loadPage('impact');">Impact</a>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Corporate Communication <b class="caret"></b></a>
@@ -119,13 +127,13 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="profile.jsp">Profile</a>
+                                <a href="#" onclick="loadPage('profile');">Profile</a>
                             </li>
                             <li>
-                                <a href="addCampaign.jsp">Add Campaign</a>
+                                <a href="#" onclick="loadPage('addCampaign');">Add Campaign</a>
                             </li>
                             <li>
-                                <a href="viewCampaign.jsp">View Campaign</a>
+                                <a href="#" onclick="loadPage('viewCampaign');">View Campaign</a>
                             </li>
                             <li>
                                 <a href="#">Logout</a>
@@ -134,7 +142,7 @@
                         </ul>
                     </li>
                     <li>
-                                <a href="help.html">Help</a>
+                                <a href="help.jsp">Help</a>
                     </li>
                 </ul>
             </div>
@@ -144,9 +152,73 @@
     </nav>
 
    
-   
-   <div id="content">	</div>
-   
+<!--    *************************************************************************************************** -->
+   <div id="contentofIndexp1">	
+   <div class="container" style="margin-top:15px;">
+   <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="images/rsz_slide2 (1).jpg" >
+        <h4 align="center">This is header</h4>
+        <p align="center">This is paragraph with description</p>
+      </div>
+
+      <div class="item">
+        <img src="images/rsz_slide4.jpg">
+        <h4 align="center">Kolhapur</h4>
+        <p align="center">Subdealer Conference</p>
+      </div>
+    
+      <div class="item">
+        <img src="images/rsz_slide3.jpg">
+        <h4 align="center">This is header</h4>
+        <p align="center">This is paragraph with description</p>
+      </div>
+
+      
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Marketing Icons Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header" id="subHeadding">
+                    Welcome to Everest Impact
+                </h1>
+            </div>
+            <div id="content">
+            
+        </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Portfolio Section -->
+        <hr>
+ </div>
+   </div>
+   <!--    *************************************************************************************************** -->
    
    <hr>
         <!-- Footer -->
@@ -165,19 +237,53 @@
     <img src="images/footimg.jpg">
     </div>
 
-    
+    <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="js/jquery.session.js"></script>
     <script type="text/javascript" src="js/json_parse.js"></script>
 	<script type="text/javascript" src="js/json2.js"></script>
 	<script type="text/javascript" src="js/jqueryConfirm/jquery-confirm.js"></script>
+    
+    <script type="text/javascript" src="jqwidgets/js/jqxcore.js"></script>
+	
+	<script type="text/javascript" src="jqwidgets/js/jqxdraw.js"></script>
+    <script type="text/javascript" src="jqwidgets/js/jqxchart.core.js"></script>
+    <script type="text/javascript" src="jqwidgets/js/jqxbuttons.js"></script>
+    <script type="text/javascript" src="jqwidgets/js/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="jqwidgets/js/jqxlistbox.js"></script>
+    <script type="text/javascript" src="jqwidgets/js/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="jqwidgets/js/jqxmenu.js"></script>
+    <script type="text/javascript" src="jqwidgets/js/jqxgrid.js"></script>
+    <script type="text/javascript" src="jqwidgets/js/jqxgrid.filter.js"></script>
+    <script type="text/javascript" src="jqwidgets/js/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="jqwidgets/js/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="jqwidgets/js/jqxgrid.columnsresize.js"></script>
+    <script type="text/javascript" src="jqwidgets/js/jqxcalendar.js"></script>
+    <script type="text/javascript" src="jqwidgets/js/jqxcheckbox.js"></script>
+	<script type="text/javascript" src="jqwidgets/js/jqxswitchbutton.js"></script>
+    <script type="text/javascript" src="jqwidgets/js/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="jqwidgets/js/jqxdata.js"></script>
+    
+    <script type="text/javascript" src="jqwidgets/js/jqxdropdownbutton.js"></script>
+    <script type="text/javascript" src="jqwidgets/js/jqxcolorpicker.js"></script>
+    <script type="text/javascript" src="jqwidgets/js/jqxwindow.js"></script>
+    <script type="text/javascript" src="jqwidgets/js/jqxeditor.js"></script>
+    <script type="text/javascript" src="jqwidgets/js/jqxtooltip.js"></script>
+    
+    <script type="text/javascript" src="jqwidgets/js/jqxdata.export.js"></script>
+    <script type="text/javascript" src="jqwidgets/js/jqxgrid.export.js"></script>
+    
+    <script type="text/javascript" src="jqwidgets/js/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="jqwidgets/js/demos.js"></script>
+    
+    
 	<script type="text/javascript" src="js/handleRequest.js"></script>
 	<script type="text/javascript" src="js/handleResponse.js"></script>
 	<script type="text/javascript" src="js/handleMessage.js"></script>
 	<script type="text/javascript" src="js/callServlet.js"></script>
+	<script type="text/javascript" src="js/custom.js"></script>
 	<script type="text/javascript" src="js/ready.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap/bootstrap.min.js"></script>
-    <!-- Script to Activate the Carousel -->
-    <script type="text/javascript" src="js/custom.js"></script>
     <script>
     $('.carousel').carousel({
         interval: 5000 //changes the speed
