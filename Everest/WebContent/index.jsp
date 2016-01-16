@@ -21,6 +21,7 @@
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="js/jqueryConfirm/jquery-confirm.css">
     <link rel="stylesheet" href="jqwidgets/css/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href=clockpicker/jquery-clockpicker.min.css" type="text/css" />
     <link href="css/style.css" rel="stylesheet">
     
     <!-- jQuery -->
@@ -55,88 +56,88 @@
                         <a href="index.jsp">Home</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Zones <b class="caret"></b></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown">Zones <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#" onclick="loadPage('centralzone');">Central Zone</a>
+                                <a onclick="loadPage('centralzone');">Central Zone</a>
                             </li>
                             <li>
-                                <a href="#" onclick="loadPage('eastzone');">East Zone</a>
+                                <a onclick="loadPage('eastzone');">East Zone</a>
                             </li>
                             <li>
-                                <a href="#" onclick="loadPage('westzone');">West Zone</a>
+                                <a onclick="loadPage('westzone');">West Zone</a>
                             </li>
                             <li>
-                                <a href="#" onclick="loadPage('northzone');">North Zone</a>
+                                <a onclick="loadPage('northzone');">North Zone</a>
                             </li>
                             <li>
-                                <a href="#" onclick="loadPage('southzone');">South Zone</a>
+                                <a onclick="loadPage('southzone');">South Zone</a>
                             </li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Activities <b class="caret"></b></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown">Activities <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#" onclick="loadPage('massmedia');">Mass Media</a>
+                                <a onclick="loadPage('massmedia');">Mass Media</a>
                                 
                             </li>
                             <li>
-                                <a href="#" onclick="loadPage('shopdisplay');">Shop Display</a>
+                                <a onclick="loadPage('shopdisplay');">Shop Display</a>
                             </li>
                             <li>
-                                <a href="#" onclick="loadPage('directcentral');">Direct Central Pgm</a>
+                                <a onclick="loadPage('directcentral');">Direct Central Pgm</a>
                             </li>
                             <li>
-                                <a href="#" onclick="loadPage('schemes');">Schemes</a>
+                                <a onclick="loadPage('schemes');">Schemes</a>
                             </li>
                             <li>
-                                <a href="#" onclick="loadPage('other');">Others</a>
+                                <a onclick="loadPage('other');">Others</a>
                             </li>
                             
                         </ul>
                     </li>
                     <li>
-                        <a href="#" onclick="loadPage('datatable');">DataTable</a>
+                        <a onclick="loadPage('datatable');">DataTable</a>
                     </li>
                     <li>
-                        <a href="#" onclick="loadPage('impact');">Impact</a>
+                        <a onclick="loadPage('impact');">Impact</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Corporate Communication <b class="caret"></b></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown">Corporate Communication <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">Product Brochures</a>
+                                <a>Product Brochures</a>
                             </li>
                             <li>
-                                <a href="#">Brand Manual</a>
+                                <a>Brand Manual</a>
                             </li>
                             <li>
-                                <a href="#">Latest Companies</a>
+                                <a>Latest Companies</a>
                             </li>
                             <li>
-                                <a href="#">Poster</a>
+                                <a>Poster</a>
                             </li>
                             <li>
-                                <a href="#">Exibition</a>
+                                <a>Exibition</a>
                             </li>
                         </ul>
                     </li>
                     
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#" onclick="loadPage('profile');">Profile</a>
+                                <a onclick="loadPage('profile');">Profile</a>
                             </li>
                             <li>
-                                <a href="#" onclick="loadPage('addCampaign');">Add Campaign</a>
+                                <a onclick="loadPage('addCampaign');">Add Campaign</a>
                             </li>
                             <li>
-                                <a href="#" onclick="loadPage('viewCampaign');">View Campaign</a>
+                                <a onclick="loadPage('viewCampaign');">View Campaign</a>
                             </li>
                             <li>
-                                <a href="#">Logout</a>
+                                <a>Logout</a>
                             </li>
                             
                         </ul>
@@ -242,9 +243,9 @@
     <script type="text/javascript" src="js/json_parse.js"></script>
 	<script type="text/javascript" src="js/json2.js"></script>
 	<script type="text/javascript" src="js/jqueryConfirm/jquery-confirm.js"></script>
+    <script type="text/javascript" src="clockpicker/jquery-clockpicker.min.js"></script>
     
     <script type="text/javascript" src="jqwidgets/js/jqxcore.js"></script>
-	
 	<script type="text/javascript" src="jqwidgets/js/jqxdraw.js"></script>
     <script type="text/javascript" src="jqwidgets/js/jqxchart.core.js"></script>
     <script type="text/javascript" src="jqwidgets/js/jqxbuttons.js"></script>

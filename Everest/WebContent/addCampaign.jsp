@@ -41,15 +41,16 @@
         <div class="row form-group">
         <table>
         	<tr><td> Category: </td><td><select class="form-control textbox"  placeholder="select category">
-										<option value="one">Select category</option>
-										<option value="one">Mass Media</option>
-										<option value="one">Shop Display</option>
-										<option value="one">Direct Central Pgm</option>
-										<option value="one">Schemes</option>
-										<option value="one">Others</option>
+										<option value="0">Select category</option>
+										<option value="1">Mass Media</option>
+										<option value="2">Shop Display</option>
+										<option value="3">Direct Central Pgm</option>
+										<option value="4">Schemes</option>
+										<option value="5">Others</option>
 														
 								</select></td></tr>
-           <tr><td> Total Budget: </td><td><input class="form-control " type="text"></td></tr>
+           <tr><td> Event Date: </td><td><input class="form-control " type="text" ></td></tr>
+           <tr><td> Event Time: </td><td><input class="form-control" id="reporttime" value="" placeholder="Now"></td></tr>
             <tr><td>Total People Attended:</td><td> <input class="form-control " type="text"></td></tr>
             <tr><td>Total People Enquiry:</td><td> <input class="form-control " type="text"></td></tr>
             <tr><td>Total Budget:</td><td> <input class="form-control " type="text"></td></tr>
@@ -97,6 +98,11 @@
                 height: "400px",
                 width: '100%'
             });
+            
+//             $('#reporttime').clockpicker({
+//                 autoclose: true
+//             });
+            
         });
     </script>
 </body>

@@ -26,7 +26,7 @@ public class CommonMethodImpl {
 		try
 		{
 			conn = MyConnection.getConnection(DBData);
-			String sql = "select * from adds_user where "+property+" = '"+value+"'";
+			String sql = "select * from user where "+property+" = '"+value+"'";
 			stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			if (rs.next())
@@ -66,7 +66,7 @@ public class CommonMethodImpl {
 					   }
 					   else if(comparison == 1)
 					   {
-						   String setAuthentication = "update adds_user set authentication = ?, date = now(), video_count = ?  where customer_key = ?";
+						   String setAuthentication = "update user set authentication = ?, date = now(), video_count = ?  where customer_key = ?";
 						   stmt1 = conn.prepareStatement(setAuthentication);
 						   stmt1.setLong(1, 1);
 						   stmt1.setLong(2, 0);
@@ -90,7 +90,7 @@ public class CommonMethodImpl {
 					{
 						if(videocount >= 5)
 						{
-							String setAuthentication = "update adds_user set authentication = ?, date = now(), video_count = ?  where customer_key = ?";
+							String setAuthentication = "update user set authentication = ?, date = now(), video_count = ?  where customer_key = ?";
 							stmt2 = conn.prepareStatement(setAuthentication);
 							stmt2.setLong(1, 0);
 							stmt2.setLong(2, 5);
@@ -111,7 +111,7 @@ public class CommonMethodImpl {
 					}
 					else if(comparison == 1)
 					{
-						String setAuthentication = "update adds_user set authentication = ?, date = now(), video_count = ?  where customer_key = ?";
+						String setAuthentication = "update user set authentication = ?, date = now(), video_count = ?  where customer_key = ?";
 						   stmt1 = conn.prepareStatement(setAuthentication);
 						   stmt1.setLong(1, 1);
 						   stmt1.setLong(2, 0);

@@ -143,7 +143,7 @@ public class ProductInterfaceImpl implements ProductInterface
 								{
 									try
 									{
-										ps2 = conn.prepareStatement("insert into adds_login_log("+usertypecolumnname+",ipaddress,login_datetime) values(?,?,now())");
+										ps2 = conn.prepareStatement("insert into login_log("+usertypecolumnname+",ipaddress,login_datetime) values(?,?,now())");
 										ps2.setLong(1, (Long) parentjson.get("key"));
 										ps2.setString(2, ipaddress);
 										result1 = ps2.executeUpdate();
