@@ -145,7 +145,7 @@
                         </ul>
                     </li>
                     <li>
-                                <a href="help.jsp">Help</a>
+                                <a onclick="loadPage('help');">Help</a>
                     </li>
                 </ul>
             </div>

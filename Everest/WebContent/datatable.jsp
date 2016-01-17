@@ -10,7 +10,6 @@
     <meta name="author" content="">
 
     <title>Everest Impact-West Zone</title>
-    
     <script type="text/javascript">
         $(document).ready(function () {
             
@@ -121,7 +120,6 @@
                 <input type="button" value="Export to PDF" id='pdfExport' />
             </div>
 </div>
-
 </body>
 
 </html>
