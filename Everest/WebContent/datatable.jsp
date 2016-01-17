@@ -116,10 +116,24 @@
 </head>
 
 <body class='default'>
+ <!-- Marketing Icons Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header">
+                   Data Table
+                </h3>
+                <ol class="breadcrumb">
+                    <li><a href="index.jsp">Home</a>
+                    </li>
+                    <li class="active">Datatable</li>
+                </ol>
+            </div>
+            </div>
+        <!-- /.row -->
 <div class="row well" style="width:98%; margin-top:20px; margin-left:1%;">
         
           <div class="col-md-2">
-             <strong>Upload excel data:</strong>
+             <strong>Upload Excel Sheet:</strong>
          </div><!--/col-md-3--> 
          <div class="col-md-3">
              <span class="btn btn-default btn-file">Browse <input type="file"></span>
@@ -131,7 +145,7 @@
              
          </div><!--/row--> 
 <div class="container">
-<h3>Data Table </h3>
+<h3>Clients Data Table </h3>
 <div id="dataTable"></div>
 <div style='margin-top: 20px;'>
             <div style='float: left;'>

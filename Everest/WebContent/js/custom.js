@@ -36,8 +36,10 @@ function loadPage(id)
 	}
 	
 	$('#subHeadding').empty();
-	$('#subHeadding').append();
+//	$('#subHeadding').append();
+	$('#subHeadding').hide();
 	$('#content').load(id+'.jsp');
+	
 }
 
 function getZoneDetails()

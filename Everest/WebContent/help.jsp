@@ -4,9 +4,9 @@
         <!-- Marketing Icons Section -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">
+                <h3 class="page-header">
                     Get help about all the Activities
-                </h1>
+                </h3>
                 <ol class="breadcrumb">
                     <li><a href="index.jsp">Home</a>
                     </li>
@@ -90,7 +90,7 @@ hour program.
                Ceramic Tiles outlet - Focus on designer boards and cement planks.
                Building Material outlet - Focus on application base towards building construction - partition, ceiling
                Gypsum Outlet - Focus on ceiling in wet areas, canopy /balcony ceiling with cement planks.
-            </p>
+            </p><br>
             <h4><strong>Practical training</strong></h4>
             <div class="row">
                         
