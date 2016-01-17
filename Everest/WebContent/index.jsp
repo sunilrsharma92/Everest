@@ -127,11 +127,11 @@
                     </li>
                     
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown">My Account<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li>
-                                <a onclick="loadPage('profile');">Profile</a>
-                            </li>
+<!--                             <li> -->
+<!--                                 <a onclick="loadPage('profile');">Profile</a> -->
+<!--                             </li> -->
                             <li>
                                 <a onclick="loadPage('addCampaign');">Add Campaign</a>
                             </li>

@@ -89,13 +89,49 @@
                 $("#dataTable").jqxGrid('exportdata', 'pdf', 'jqxGrid');
             });
             
+            
+//             $("#print").jqxButton({ width: 80 });
+            
+//             $("#print").click(function () {
+//                  var gridContent = $("#dataTable").jqxDataTable('exportData', 'html');
+//                  var newWindow = window.open('', '', 'width=800, height=500'),
+//                  document = newWindow.document.open(),
+//                  pageContent =
+//                      '<!DOCTYPE html>' +
+//                      '<html>' +
+//                      '<head>' +
+//                      '<meta charset="utf-8" />' +
+//                      '<title>jQWidgets DataTable</title>' +
+//                      '</head>' +
+//                      '<body>' + gridContent + '</body></html>';
+//                  document.write(pageContent);
+//                  document.close();
+//                  newWindow.print();
+//              });
+            
+            
         });
     </script>	
     
 </head>
 
 <body class='default'>
+<div class="row well" style="width:98%; margin-top:20px; margin-left:1%;">
+        
+          <div class="col-md-2">
+             <strong>Upload excel data:</strong>
+         </div><!--/col-md-3--> 
+         <div class="col-md-3">
+             <span class="btn btn-default btn-file">Browse <input type="file"></span>
+         </div><!--/col-md-3-->
+<!--          <div class="col-md-1"></div> -->
+         <div class="col-md-2">
+            <button type="button" class="btn btn-default"  style="margin-left: 30px; margin-top: 10px;"><span class="glyphicon glyphicon-cloud-upload"> </span> Upload</button>
+             </div>
+             
+         </div><!--/row--> 
 <div class="container">
+<h3>Data Table </h3>
 <div id="dataTable"></div>
 <div style='margin-top: 20px;'>
             <div style='float: left;'>
@@ -119,6 +155,9 @@
             <div style='margin-left: 10px; float: left;'>
                 <input type="button" value="Export to PDF" id='pdfExport' />
             </div>
+<!--             <div style='margin-left: 10px; float: left;'> -->
+<!--                 <input type="button" value="Print" id='print' /> -->
+<!--             </div> -->
 </div>
 </body>
 
