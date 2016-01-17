@@ -72,7 +72,9 @@ function handleLoginResponse(response)
 		if(action != 3)
 		{
 			$(".indexoverlay").hide();
-			jqueryconform("Message", statusdesc);
+			$("#loginalerts").empty();
+			$("#loginalerts").append(statusdesc);
+//			jqueryconform("Message", statusdesc);
 		}
 		else
 		{

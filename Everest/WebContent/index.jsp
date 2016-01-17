@@ -16,12 +16,14 @@
 		response.sendRedirect("Login.jsp");
 	}
 	%>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link  type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link  type="text/css" rel="stylesheet" href=clockpicker/bootstrap-clockpicker.min.css" />
+    
     <link href="css/modern-business.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="js/jqueryConfirm/jquery-confirm.css">
     <link rel="stylesheet" href="jqwidgets/css/jqx.base.css" type="text/css" />
-    <link rel="stylesheet" href=clockpicker/jquery-clockpicker.min.css" type="text/css" />
+    
     <link href="css/style.css" rel="stylesheet">
     
     <!-- jQuery -->
@@ -125,7 +127,7 @@
                     </li>
                     
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a onclick="loadPage('profile');">Profile</a>
@@ -137,7 +139,7 @@
                                 <a onclick="loadPage('viewCampaign');">View Campaign</a>
                             </li>
                             <li>
-                                <a>Logout</a>
+                                <a href="Login.jsp">Logout</a>
                             </li>
                             
                         </ul>
@@ -205,7 +207,7 @@
         <!-- Marketing Icons Section -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header" id="subHeadding">
+                <h1 class="page-header" id="subHeadding" style="font-size: 23px; margin: 20px 0px 20px;">
                     Welcome to Everest Impact
                 </h1>
             </div>
@@ -243,7 +245,6 @@
     <script type="text/javascript" src="js/json_parse.js"></script>
 	<script type="text/javascript" src="js/json2.js"></script>
 	<script type="text/javascript" src="js/jqueryConfirm/jquery-confirm.js"></script>
-    <script type="text/javascript" src="clockpicker/jquery-clockpicker.min.js"></script>
     
     <script type="text/javascript" src="jqwidgets/js/jqxcore.js"></script>
 	<script type="text/javascript" src="jqwidgets/js/jqxdraw.js"></script>
@@ -285,6 +286,7 @@
 	<script type="text/javascript" src="js/ready.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="clockpicker/bootstrap-clockpicker.min.js"></script>
     <script>
     $('.carousel').carousel({
         interval: 5000 //changes the speed

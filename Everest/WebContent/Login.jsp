@@ -156,7 +156,7 @@ body{
 }
 
 #loading-img {
-	background: url(loader_img/spinner.gif) center center no-repeat;
+	background: url(loader_img/LoadingNew.gif) center center no-repeat;
 	background-size: 100px 100px;
 	height: 50%;
 	z-index: 100000;

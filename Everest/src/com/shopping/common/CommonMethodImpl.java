@@ -49,7 +49,7 @@ public class CommonMethodImpl {
 				parentjson.put("profileImg", rs.getString("profile_img"));
 				parentjson.put("rechargeAmmount", rs.getFloat("recharge_ammount"));
 //				parentjson.put("videocount", rs.getLong("video_count"));
-				long videocount = rs.getLong("video_count");
+				/*long videocount = rs.getLong("video_count");
 				int authentication = rs.getInt("authentication");
 				Date previousDate = rs.getDate("date");
 				
@@ -123,7 +123,7 @@ public class CommonMethodImpl {
 								parentjson.put("authentication", 1);
 							}
 					}
-				}
+				}*/
 			}
 			
 			closeConnectionUpdate(stmt, conn);
@@ -139,7 +139,7 @@ public class CommonMethodImpl {
 		return null;
 	}
 	
-	public static int dateDifference( String DBData, Date previousDate)
+	/*public static int dateDifference( String DBData, Date previousDate)
 	{
 		Connection conn = null;
 		PreparedStatement stmt2 = null;
@@ -165,7 +165,86 @@ public class CommonMethodImpl {
 			e.printStackTrace();
 		}
 		return 0;
-	}
+	}*/
+	
+	public static JSONObject getZoneDetails(int intervalCount, PreparedStatement ps, Connection conn, ResultSet rs, JSONArray jsonarray1, JSONObject parentjson, String action)
+	{
+		try
+		{
+			String getZoneDetailsOfPreviousMonth = "";
+			if(action.equalsIgnoreCase(""))
+			{
+				getZoneDetailsOfPreviousMonth = "SELECT * FROM sales_promotion_expenses"+
+						  "WHERE YEAR(import_date) = YEAR(CURRENT_DATE - INTERVAL "+intervalCount+" MONTH)"+
+						  "AND MONTH(import_date) = MONTH(CURRENT_DATE - INTERVAL "+intervalCount+" MONTH)";
+			}
+			else
+			{
+				getZoneDetailsOfPreviousMonth = "SELECT "+action+" FROM sales_promotion_expenses"+
+						  "WHERE YEAR(import_date) = YEAR(CURRENT_DATE - INTERVAL "+intervalCount+" MONTH)"+
+						  "AND MONTH(import_date) = MONTH(CURRENT_DATE - INTERVAL "+intervalCount+" MONTH)";
+			}
+					
+					ps = conn.prepareStatement(getZoneDetailsOfPreviousMonth);
+					rs = ps.executeQuery();
+					if (rs != null)
+					{
+						while (rs.next())
+						{
+							JSONObject childjson1 = new JSONObject();
+							childjson1.put("key", rs.getLong("sales_promotion_expenses_key"));
+							childjson1.put("state", rs.getString("state_ref"));
+							childjson1.put("city", rs.getString("city_ref"));
+							childjson1.put("tvcable", rs.getString("tv_cable"));
+							childjson1.put("radiofm", rs.getString("radio_fm"));
+							childjson1.put("newspapers", rs.getString("newspapers"));
+							childjson1.put("wallpaintings", rs.getString("wall_paintings"));
+							childjson1.put("dealerboards", rs.getString("dealer_boards"));
+							childjson1.put("pop", rs.getString("pop"));
+							childjson1.put("ctp", rs.getString("ctp"));
+							childjson1.put("dealermeets", rs.getString("dealer_meets"));
+							childjson1.put("vancampaign", rs.getString("van_campaign"));
+							childjson1.put("mandimelas", rs.getInt("mandi_melas"));
+							childjson1.put("stocklist", rs.getInt("stocklist"));
+							childjson1.put("subdealers", rs.getInt("subdealers"));
+							childjson1.put("giveaways", rs.getInt("give_aways"));
+							childjson1.put("misc", rs.getInt("misc"));
+							childjson1.put("importtime", rs.getString("import_time"));
+							childjson1.put("importdate", rs.getString("import_date"));
+							childjson1.put("total", rs.getFloat("total"));
+							
+							jsonarray1.add(childjson1);
+						}
+					
+					parentjson.put("zoneDetails", jsonarray1);
+					return parentjson;
+					}
+					else
+					{
+						if(action.equalsIgnoreCase(""))
+						{
+							intervalCount++;
+							if(intervalCount != 6)
+							{
+								getZoneDetails(intervalCount, ps, conn, rs, jsonarray1, parentjson, action);
+							}
+							else
+							{
+								return null;
+							}
+						}
+						else
+						{
+							return null;
+						}
+					}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+}
 	
 	 // -- close all for Insert/Update
 	  public static void closeConnectionUpdate(PreparedStatement stmt,Connection conn)

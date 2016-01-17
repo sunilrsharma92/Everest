@@ -139,45 +139,37 @@
             </div><!--/col-md-3-->
             <div class="col-md-2">
                 <div class="dropdown">
-                  <button class="btn btn-default dropdown-toggle fix" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  Zone
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">Central</a></li>
-                    <li><a href="#">East</a></li>
-                    <li><a href="#">West</a></li>
-                    <li><a href="#">North</a></li>
-                   
-                    <li><a href="#">South</a></li>
-                </ul>
+                <select class="form-control textbox"  placeholder="Filter By Zone">
+										<option value="0">Filter By Zone</option>
+										<option value="1">Central</option>
+										<option value="2">East</option>
+										<option value="3">West</option>
+										<option value="4">North</option>
+										<option value="5">South</option>
+														
+			</select>
             </div>
             </div><!--/col-md-3-->
             <div class="col-md-2">
                 <div class="dropdown">
-                  <button class="btn btn-default dropdown-toggle fix" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  City
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">w1-Mumbai</a></li>
-                    <li><a href="#">w2-Thane/Palghar</a></li>
-                    <li><a href="#">w3-Raigad</a></li>
-                    <li><a href="#">w4-Nasik/Ahmednagar</a></li>
-                    <li><a href="#">w5-Pune/Solapur</a></li>
-                    <li><a href="#">w6</a></li>
-                    <li><a href="#">w7-Aurangabad</a></li>
-                    <li><a href="#">w8-Ratnagiri/Sindhudurg</a></li>
-                    <li><a href="#">w9-Dhule/Jalgaon/Nandurbar</a></li>
-                    <li><a href="#">w10-Valsad</a></li>
-                    <li><a href="#">w11-Ahmedabad</a></li>
-                    <li><a href="#">w12-Saurashtra</a></li>
-                    <li><a href="#">w13-Surat</a></li>
-                    <li><a href="#">w14-Baroda</a></li>
-                    <li><a href="#">w15-</a></li>
-                    <li><a href="#">w16-Vidarbha</a></li>
-                    
-                </ul>
+                    <select class="form-control textbox"  placeholder="Filter By City">
+                    <option value="43">w1-Mumbai</option>
+                    <option value="44">w2-Thane/Palghar</option>
+                    <option value="45">w3-Raigad</option>
+                    <option value="46">w4-Nasik/Ahmednagar</option>
+                    <option value="47">w5-Pune/Solapur</option>
+                    <option value="48">w6-kolapur/Satara</option>
+                    <option value="49">w7-Aurangabad</option>
+                    <option value="50">w8-Ratnagiri/Sindhudurg</option>
+                    <option value="51">w9-Dhule/Jalgaon/Nandurbar</option>
+                    <option value="52">w10-Valsad</option>
+                    <option value="53">w11-Ahmedabad</option>
+                    <option value="54">w12-Saurashtra</option>
+                    <option value="55">w13-Surat</option>
+                    <option value="56">w14-Baroda</option>
+                    <option value="57">w15-Goa</option>
+                    <option value="58">w16-Vidarbha</option>
+                 </select>
             </div>
             </div><!--/col-md-3-->
             <div class="col-md-2">
