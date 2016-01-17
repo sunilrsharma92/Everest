@@ -167,7 +167,15 @@ public class CommonMethodImpl {
 		return 0;
 	}*/
 	
-	public static JSONObject getZoneDetails(int intervalCount, PreparedStatement ps, Connection conn, ResultSet rs, JSONArray jsonarray1, JSONObject parentjson, String action)
+	public static JSONObject getZoneDetails( int intervalCount, 
+																				PreparedStatement ps, 
+																				Connection conn, 
+																				ResultSet rs, 
+																				JSONArray jsonarray1, 
+																				JSONObject parentjson, 
+																				String action, 
+																				long zoneid, 
+																				long cityid)
 	{
 		try
 		{
@@ -175,16 +183,16 @@ public class CommonMethodImpl {
 			if(action.equalsIgnoreCase(""))
 			{
 				getZoneDetailsOfPreviousMonth = "SELECT * FROM sales_promotion_expenses"+
-						  "WHERE YEAR(import_date) = YEAR(CURRENT_DATE - INTERVAL "+intervalCount+" MONTH)"+
-						  "AND MONTH(import_date) = MONTH(CURRENT_DATE - INTERVAL "+intervalCount+" MONTH)";
+						  " WHERE YEAR(import_date) = YEAR(CURRENT_DATE - INTERVAL "+intervalCount+" MONTH)"+
+						  " AND MONTH(import_date) = MONTH(CURRENT_DATE - INTERVAL "+intervalCount+" MONTH)";
 			}
-			else
+			else if(!action.equalsIgnoreCase(""))
 			{
 				getZoneDetailsOfPreviousMonth = "SELECT "+action+" FROM sales_promotion_expenses"+
-						  "WHERE YEAR(import_date) = YEAR(CURRENT_DATE - INTERVAL "+intervalCount+" MONTH)"+
-						  "AND MONTH(import_date) = MONTH(CURRENT_DATE - INTERVAL "+intervalCount+" MONTH)";
+						  " WHERE YEAR(import_date) = YEAR(CURRENT_DATE - INTERVAL "+intervalCount+" MONTH)"+
+						  " AND MONTH(import_date) = MONTH(CURRENT_DATE - INTERVAL "+intervalCount+" MONTH)";
 			}
-					
+					System.out.println("getZoneDetailsOfPreviousMonth : "+getZoneDetailsOfPreviousMonth);
 					ps = conn.prepareStatement(getZoneDetailsOfPreviousMonth);
 					rs = ps.executeQuery();
 					if (rs != null)
@@ -226,7 +234,7 @@ public class CommonMethodImpl {
 							intervalCount++;
 							if(intervalCount != 6)
 							{
-								getZoneDetails(intervalCount, ps, conn, rs, jsonarray1, parentjson, action);
+								getZoneDetails(intervalCount, ps, conn, rs, jsonarray1, parentjson, action, zoneid, cityid);
 							}
 							else
 							{

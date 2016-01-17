@@ -556,17 +556,18 @@ public class ProductInterfaceImpl implements ProductInterface
 					{
 						JSONObject object = (JSONObject) JSONValue.parse(jsonMsg);
 
-						String zoneid = (String) object.get("zoneid");
+						long zoneid = (long) object.get("zoneid");
+						long cityid = (long) object.get("cityid");
 						String action = (String) object.get("action");
 						int intervalCount = 0;
 						/*getZoneDetailsOfCurrentMonth  = "select * from sales_promotion_expenses"+
 																					  "where import_date >= LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL 1 MONTH"+ 
 																					  "AND import_date < LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY";*/
-						parentjson = CommonMethodImpl.getZoneDetails(intervalCount, ps, conn, rs, jsonarray1, parentjson,action);
+						parentjson = CommonMethodImpl.getZoneDetails(intervalCount, ps, conn, rs, jsonarray1, parentjson,action, zoneid, cityid);
 						
 						if(parentjson != null)
 						{
-							parentjson = CommonMethodImpl.putSuccessJson(parentjson, 2056);
+							parentjson = CommonMethodImpl.putSuccessJson(parentjson, 2057);
 						}
 						else
 						{
