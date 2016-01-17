@@ -30,23 +30,17 @@
         <table>
         	
         	<tr><td> Zone: </td><td>
-        	<select class="form-control textbox"  placeholder="Filter By Zone">
+        	<select class="form-control textbox"  placeholder="Filter By Zone" id="selectZone">
 										<option value="0">Select Zone</option>
 										<option value="1">Central</option>
 										<option value="2">East</option>
 										<option value="3">West</option>
-           <tr><td> Event Date: </td><td><input class="form-control " type="text" id="eventDate"></td></tr>
-           <tr><td> Event Time: </td><td><input class="form-control" id="eventTime" placeholder="Now"></td></tr>
-            <tr><td>Total People Attended:</td><td> <input class="form-control " id="peopleAtt" type="text"></td></tr>
-            <tr><td>Total People Enquiry:</td><td> <input class="form-control " id="peopEnq" type="text"></td></tr>
-            <tr><td>Total Budget:</td><td> <input class="form-control " id="totBud" type="text"></td></tr>
 										<option value="4">North</option>
 										<option value="5">South</option>
-														
 			</select>
 			</td></tr>
-        	<tr><td> City: </td><td>
-        	<select class="form-control textbox"  placeholder="Select City">
+        	<!--<tr ><td> City: </td><td>
+        	<select class="form-control textbox"  placeholder="Select City" id="selectCity">
                     <option value="43">w1-Mumbai</option>
                     <option value="44">w2-Thane/Palghar</option>
                     <option value="45">w3-Raigad</option>
@@ -64,12 +58,17 @@
                     <option value="57">w15-Goa</option>
                     <option value="58">w16-Vidarbha</option>
                  </select>
-			</td></tr>
+			</td></tr> -->
+			 <tr><td> Event Date: </td><td><input class="form-control " type="text" id="eventDate"></td></tr>
+<!--            <tr><td> Event Time: </td><td><input class="form-control" id="eventTime" ></td></tr> -->
+            <tr><td>Total People Attended:</td><td> <input class="form-control " id="peopleAtt" type="text"></td></tr>
+            <tr><td>Total People Enquiry:</td><td> <input class="form-control " id="peopEnq" type="text"></td></tr>
+            <tr><td>Total Budget:</td><td> <input class="form-control " id="totBud" type="text"></td></tr>
            <tr>
            <td> Event Time: </td>
            <td>
-           <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
-				<input type="text" class="form-control" value="13:14">
+           <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true" >
+				<input type="text" class="form-control" value="13:14" id="eventTime">
 				<span class="input-group-addon">
 					<span class="glyphicon glyphicon-time"></span>
 				</span>
@@ -91,9 +90,9 @@
          </div><!--/row--> 
          
          <form method="post" action="UploadServlet" id="uploadFile" enctype="multipart/form-data">
-            Select file to upload: <input type="file" name="fileName"  id="fileName"/>
+            Select file to upload for Image: <input type="file" name="fileName"  id="fileName"/>
             <br/><br/>
-            <input type="submit" value="Upload" id="upldBtn"/>
+            <input type="submit" value="Upload" id="upldBtn" style="display:none"/>
             
             
             <script type="text/javascript" src="js/jquery.form.js"></script>
@@ -103,7 +102,6 @@
 							{
 							$("#fileName").change(function()
 							{
-								alert("fileNameChanges");
 								$(".indexoverlay").show();
 								$("#upldBtn").trigger("click");
 							});
@@ -118,6 +116,40 @@
 							catch (e) 
 							{
 								console.log("Exception in uploading file on jsp : "+e);
+							}
+							
+						});
+						
+			</script>
+            
+        </form>
+         <form method="post" action="UploadServlet" id="uploadFileExcel" enctype="multipart/form-data">
+            Select file to upload for Excel: <input type="file" name="fileNameExcel"  id="fileNameExcel"/>
+            <br/><br/>
+            <input type="submit" value="Upload" id="upldBtnExcel" style="display:none"/>
+            
+            
+            <script type="text/javascript" src="js/jquery.form.js"></script>
+			<script type="text/javascript">
+						$(document).ready(function(){
+							try
+							{
+							$("#fileNameExcel").change(function()
+							{
+								$(".indexoverlay").show();
+								$("#upldBtnExcel").trigger("click");
+							});
+							
+							$('#uploadFileExcel').ajaxForm({
+							success : function (msg)
+							{
+								console.log("Successs ");
+							}
+						});
+							}
+							catch (e) 
+							{
+								console.log("Exception in uploading file on jsp for Excel: "+e);
 							}
 							
 						});

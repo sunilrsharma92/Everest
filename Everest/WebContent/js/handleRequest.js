@@ -79,12 +79,13 @@ function handleRequest()
 			console.log("handleRequest handleResetPassword Exception ::" + e);
 		}
 	}
-	function handleSubmitReportDetails(selectCat, peopleAtt, peopEnq, totBud, eventDate, eventTime, editor)
+	
+	function handleSubmitReportDetails(selectZone, peopleAtt, peopEnq, totBud, eventDate, eventTime, editor)
 	{
 		try
 		{
 			var report = {};
-			report.selectCat = selectCat;
+			report.selectZone = selectZone;
 			report.peopleAtt = peopleAtt;
 			report.peopEnq = peopEnq;
 			report.totBud = totBud;
@@ -101,6 +102,7 @@ function handleRequest()
 			console.log("handleRequest handleSubmitReportDetails Exception ::" + e);
 		}
 	}
+	
 	function getZoneDetailsRequest(action, zoneid, cityid)
 	{
 		try

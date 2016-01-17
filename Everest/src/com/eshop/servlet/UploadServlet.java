@@ -23,6 +23,8 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FilenameUtils;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 
 import com.eshop.dao.ConstantValues;
 import com.eshop.dao.ProductInterface;
@@ -52,7 +54,7 @@ public class UploadServlet extends HttpServlet {
     	File file = new File(relativePath);
 //    	System.out.println(relativePath.length());
 //        foldername = "Images\\ProfileImg";
-        foldernamejsp = "uploads/excel/";
+        foldernamejsp = "uploads/";
 //        System.out.println("FolderName "+foldername);
         DiskFileItemFactory fileFactory = new DiskFileItemFactory();
         File filesDir = (File) file;
@@ -103,6 +105,7 @@ public class UploadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     {
     	HttpSession session = request.getSession();
+    	PrintWriter out = response.getWriter();
 //    	String key = String.valueOf( session.getAttribute("key"));
     	
     	if(!ServletFileUpload.isMultipartContent(request))
@@ -111,11 +114,10 @@ public class UploadServlet extends HttpServlet {
         }
         
 //        response.setContentType("text/html");
-//        PrintWriter out = response.getWriter();
 //        out.write("<html><head></head><body>");
         try {
         	
-        	String ajaxUpdateResult = "";
+//        	String ajaxUpdateResult = "";
             List fileItemsList = uploader.parseRequest(request);
             Iterator fileItemsIterator = fileItemsList.iterator();
             
@@ -140,9 +142,8 @@ public class UploadServlet extends HttpServlet {
 	                
 	                File file = null;
 	                String img = "";
-	                
-	                file = new File(relativePath+File.separator+filename);
-	                
+	                String strjsonMsgResponse = "";
+	                		
 	                String ext = FilenameUtils.getExtension(filename);
 	                
 	                
@@ -161,19 +162,27 @@ public class UploadServlet extends HttpServlet {
 	                
 	                if(ext.equalsIgnoreCase("csv") || ext.equalsIgnoreCase("xls"))
 	                {
-	                	dao.handleRequestResponse(relativePath+File.separator+filename, 9003, DBData, null);
+	                	FilenameUtils.removeExtension(filename);
+	                	String defaultName = "csvFile";
+	                	
+	                	String path = relativePath+File.separator+defaultName+"."+ext;
+	                	
+	                	file = new File(path);
+	                	fileItem.write(file);
+	                	strjsonMsgResponse = dao.handleRequestResponse(path, 9003, DBData, null);
 	                }
 	                else if(ext.equalsIgnoreCase("png") || ext.equalsIgnoreCase("jpeg") || ext.equalsIgnoreCase("jpg") || ext.equalsIgnoreCase("gif"))
 	                {
+	                	file = new File(relativePath+File.separator+filename);
 	                	img = foldernamejsp+filename;
-	                	PrintWriter out = response.getWriter();
 		                out.write(img.toString());
 		                
-		                dao.handleRequestResponse(img, 9002, DBData, null);
+		                fileItem.write(file);
+		                session.removeAttribute("imageUploadPath");
+		                session.setAttribute("imageUploadPath", img);
+//		                strjsonMsgResponse = dao.handleRequestResponse(img, 9002, DBData, null);
 	                }
-//	                PathofFile=foldername+"\\"+filename;
-	                fileItem.write(file);
-	                
+	                out.println(strjsonMsgResponse);
 	        	        
 //	                }
                 
@@ -186,7 +195,7 @@ public class UploadServlet extends HttpServlet {
         {
 //            out.write("Exception in uploading file.");
         	e.printStackTrace();
-        	log.writeLogs("Exception in uploading file.",0);
+        	log.writeLogs("Exception in uploading file : "+e.getMessage(),0);
         } 
         
 //        out.write("</body></html>");

@@ -300,7 +300,7 @@ function emailValidation(value)
 function submitReportDetails()
 {
 	$(".customeroverlay").show();
-	var selectCat = $("#selectCat").val();
+	var selectZone = $("#selectZone").val();
 	var peopleAtt = $("#peopleAtt").val();
 	var peopEnq = $("#peopEnq").val();
 	var totBud = $("#totBud").val();
@@ -308,6 +308,6 @@ function submitReportDetails()
 	var eventTime = $("#eventTime").val();
 	var editor = $("#editor").val();
 	
-	objhandleRequest.handleSubmitReportDetails(selectCat, peopleAtt, peopEnq, totBud, eventDate, eventTime, editor);
+	objhandleRequest.handleSubmitReportDetails(selectZone, peopleAtt, peopEnq, totBud, eventDate, eventTime, editor);
 }
 var objhandleRequest = new handleRequest();

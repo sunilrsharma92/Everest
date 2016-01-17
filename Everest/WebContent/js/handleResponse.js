@@ -71,14 +71,14 @@ function listResponseHandler(response, command, status)
 					case 2057:
 						zoneDetailsResponse(response);
 						break;
-					case 9002:
+					case 5001:
 						reportDetailsResponse(response);
 						break;
-					case 9003:
-						reportDetailsResponse(response);
+					case 5003:
+						uploadExcelImageResponse(response);
 						break;
-					case 9004:
-						reportDetailsResponse(response);
+					case 5004:
+						uploadExcelImageResponse(response);
 						break;
 					case 2058:
 						break;
@@ -109,14 +109,14 @@ function listResponseHandler(response, command, status)
 					case 1058:
 						handleWalletUpdateResponse(response);
 						break;
-					case 5002:
+					case 9001:
 						reportDetailsResponse(response);
 						break;
-					case 5003:
-						reportDetailsResponse(response);
+					case 9003:
+						uploadExcelImageResponse(response);
 						break;
-					case 5004:
-						reportDetailsResponse(response);
+					case 9004:
+						uploadExcelImageResponse(response);
 						break;
 				}
 				break;

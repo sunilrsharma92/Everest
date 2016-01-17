@@ -68,50 +68,52 @@ function zoneDetailsResponse(response)
 		console.log("zoneDetailsResponse : : Exception : "+e);
 	}
 }
+
 function reportDetailsResponse(response)
 {
-	var action = response.status;
-	var statusdesc = response.statusdesc;
-	if(action != 3)
+	try
 	{
-		jqueryconform("Message", statusdesc);
+		var action = response.status;
+		var statusdesc = response.statusdesc;
+		if(action != 3)
+		{
+			jqueryconform("Message", statusdesc);
+		}
+		else
+		{
+//			location.replace("impact.jsp");
+			console.log("reportDetailsResponse Exception : " + e);	
+		}
 	}
-	else
+	catch(e)
 	{
-		
+		console.log("reportDetailsResponse Exception : " + e);	
 	}
 	$(".indexoverlay").show().delay(100).fadeOut();
 }
 
-function reportDetailsResponse(response)
+function uploadExcelImageResponse(response)
 {
-	var action = response.status;
-	var statusdesc = response.statusdesc;
-	if(action != 3)
+	try
 	{
-		jqueryconform("Message", statusdesc);
+		var action = response.status;
+		var statusdesc = response.statusdesc;
+		if(action != 3)
+		{
+			jqueryconform("Message", statusdesc);
+		}
+		else
+		{
+			console.log("uploadExcelImageResponse Exception : " + e);	
+		}
 	}
-	else
+	catch(e)
 	{
-		
+		console.log("uploadExcelImageResponse Exception : " + e);	
 	}
 	$(".indexoverlay").show().delay(100).fadeOut();
 }
 
-function reportDetailsResponse(response)
-{
-	var action = response.status;
-	var statusdesc = response.statusdesc;
-	if(action != 3)
-	{
-		jqueryconform("Message", statusdesc);
-	}
-	else
-	{
-		
-	}
-	$(".indexoverlay").show().delay(100).fadeOut();
-}
 function handleLoginResponse(response)
 {
 	try

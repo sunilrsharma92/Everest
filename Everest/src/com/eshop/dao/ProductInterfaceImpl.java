@@ -1,6 +1,7 @@
 package com.eshop.dao;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -645,17 +646,16 @@ public class ProductInterfaceImpl implements ProductInterface
 					{
 						JSONObject object = (JSONObject) JSONValue.parse(jsonMsg);
 						
-						String selectCat = (String) object.get("selectCat");
+						String selectZone = (String) object.get("selectZone");
 						String peopleAtt = (String) object.get("peopleAtt");
 						String peopEnq = (String) object.get("peopEnq");
 						String totBud = (String) object.get("totBud");
 						String eventDate = (String) object.get("eventDate");
 						String eventTime = (String) object.get("eventTime");
 						String editor = (String) object.get("editor");
+
 						
-						
-						
-						int selectCatInt = selectCat != null && !selectCat.trim().isEmpty() ? Integer.parseInt(selectCat) : 0;
+						int selectZoneInt = selectZone != null && !selectZone.trim().isEmpty() ? Integer.parseInt(selectZone) : 0;
 						int peopleAttInt = peopleAtt != null && !peopleAtt.trim().isEmpty() ? Integer.parseInt(peopleAtt) : 0;
 						int peopEnqInt = peopEnq != null && !peopEnq.trim().isEmpty() ? Integer.parseInt(peopEnq) : 0;
 						int totBudInt = totBud != null && !totBud.trim().isEmpty() ? Integer.parseInt(totBud) : 0;
@@ -663,27 +663,30 @@ public class ProductInterfaceImpl implements ProductInterface
 						String eventTimeStr = eventTime != null && !eventTime.trim().isEmpty() ? eventTime : "";
 						String editorStr = editor != null && !editor.trim().isEmpty() ? editor : "";
 						
-						String sql = "insert into report(program_id, total_people_attented,  total_people_enquiry, total_budget, event_date, event_time, body, report_date, report_time)"
-								+ " values(?,?,?,?,?,?,?,now(),now())";
+						String sql = "insert into report(zone_id, total_people_attented,  total_people_enquiry, total_budget, event_date, event_time, body, report_date, report_time, event_img)"
+								+ " values(?,?,?,?,?,?,?,now(),now(),?)";
 						
 						ps = conn.prepareStatement(sql);
-						ps.setLong(1, selectCatInt);
+						ps.setLong(1, selectZoneInt);
 						ps.setLong(2, peopleAttInt);
 						ps.setLong(3, peopEnqInt);
 						ps.setLong(4, totBudInt);
 						ps.setString(5, eventDateStr);
 						ps.setString(6, eventTimeStr);
 						ps.setString(7, editorStr);
+						ps.setString(8, regsmsTemplet);
 						
 						int x = ps.executeUpdate();
+						
+						parentjson = new JSONObject();
 						if(x > 0)
 						{
-							parentjson = CommonMethodImpl.putSuccessJson(parentjson, command);
+							parentjson = CommonMethodImpl.putSuccessJson(parentjson, 5001);
 							mms.writeLogs("Report Details inserted successfully",1);
 						}
 						else
 						{
-							parentjson = CommonMethodImpl.putFailedJson(parentjson, 5002);
+							parentjson = CommonMethodImpl.putFailedJson(parentjson, command);
 							parentjson.put("statusdesc", "Error occurred during saving report Detais");
 							mms.writeLogs("Report Details saving failed",0);
 						}
@@ -699,7 +702,7 @@ public class ProductInterfaceImpl implements ProductInterface
 					}
 					break;
 					
-					
+					// - no use currently
 				 case 9002: // -- Update image in db // 
 						try
 						{
@@ -765,8 +768,9 @@ public class ProductInterfaceImpl implements ProductInterface
 				    			if(tokensHeader == null || tokensHeader.length < columnLength)
 				    			{
 				    				System.out.println("Insufficient Head columns : "+Arrays.toString(tokensHeader));
+				    				mms.writeLogs("command : "+command+" Insufficient Head columns : "+Arrays.toString(tokensHeader), 0);
 				    				parentjson.put("statusdesc", "Insufficient Head columns : "+Arrays.toString(tokensHeader));
-				    				CommonMethodImpl.putFailedJson(parentjson, command);
+				    				parentjson = CommonMethodImpl.putFailedJson(parentjson, command);
 				    			}
 				    			else
 				    			{
@@ -788,14 +792,16 @@ public class ProductInterfaceImpl implements ProductInterface
 				    				if(errorRowsList != null && errorRowsList.size() > 0)
 				    				{
 				    					System.out.println("Insufficient Value for rows : "+Arrays.toString(errorRowsList.toArray()));
+				    					mms.writeLogs("command : "+command+" Insufficient Value for rows : "+Arrays.toString(errorRowsList.toArray()), 0);
 					    				parentjson.put("statusdesc", "Insufficient Head columns : "+Arrays.toString(tokensHeader));
-					    				CommonMethodImpl.putFailedJson(parentjson, command);
+					    				parentjson = CommonMethodImpl.putFailedJson(parentjson, command);
 				    				}
 				    				else
 				    				{
 				    					System.out.println("CSV file is authenticated, you can upload now...");
+				    					mms.writeLogs("CSV file is authenticated, you can upload now...", 1);
 					    				parentjson.put("statusdesc", "CSV file is authenticated, you can upload now...");
-					    				CommonMethodImpl.putSuccessJson(parentjson, 5003);
+					    				parentjson = CommonMethodImpl.putSuccessJson(parentjson, 5003);
 
 				    				}
 				    			}
@@ -822,9 +828,10 @@ public class ProductInterfaceImpl implements ProductInterface
 					 try
 					 {
 				            String line = "";
+				            String filePath = ConstantValues.relativePath+File.separator+"csvFile.csv";
 				            
 				            //Create the file reader
-				            fileReader = new BufferedReader(new FileReader(jsonMsg));
+				            fileReader = new BufferedReader(new FileReader(filePath));
 
 
 				            //Read the CSV file header to skip it
@@ -888,10 +895,16 @@ public class ProductInterfaceImpl implements ProductInterface
 				                	 
 				                	 if(cityRef == 0 || stateRef == 0)
 				                	 {
-				                		 System.out.println("State or City entered in incorrect for row : "+(currentRow-startFrom)); // -- actual 1st row = (current row )5 - 4 (start from row) 
-				                		 errorRowsList.add("State or City entered in incorrect for row : "+(currentRow-startFrom));
-				                		 parentjson.put("statusdesc", "State or City entered in incorrect for row : "+(currentRow-startFrom));
-				                		 CommonMethodImpl.putFailedJson(parentjson, 5004);
+				                		 if(stateNameToken.equalsIgnoreCase("Total -Rs."))
+				                		 {
+				                			 line = fileReader.readLine(); 
+				                		 }
+				                		 else
+				                		 {
+				                			 System.out.println("State or City entered in incorrect for row : "+(currentRow-startFrom)); // -- actual 1st row = (current row )5 - 4 (start from row) 
+					                		 errorRowsList.add("State or City entered in incorrect for row : "+(currentRow-startFrom));
+					                		 mms.writeLogs("State or City entered in incorrect for row : "+(currentRow-startFrom),0);
+				                		 }
 				                	 }
 				                	 else
 				                	 {
@@ -919,18 +932,18 @@ public class ProductInterfaceImpl implements ProductInterface
 				                	 st.setInt(16, Integer.parseInt((tokensRow[15] != null &&  !tokensRow[15].trim().isEmpty()) ? tokensRow[15] : "0"));
 				                	 st.setInt(17, Integer.parseInt((tokensRow[16] != null &&  !tokensRow[16].trim().isEmpty()) ? tokensRow[16] : "0"));
 				                	 
-				                	 int result = st.executeUpdate();
+				                	 result = st.executeUpdate();
 				                	 
 				                	 if(result > 0)
 				                	 {
 				                		 System.out.println(Arrays.toString(tokensRow)+" successfully inserted");
+				                		 mms.writeLogs(Arrays.toString(tokensRow)+" successfully inserted",1);
 				                	 }
 				                	 else
 				                	 {
 				                		 System.out.println("Error occurred in uploading row : "+(currentRow - startFrom)); // -- actual 1st row = (current row )5 - 4 (start from row) 
 				                		 errorRowsList.add("Error occurred in uploading row : "+(currentRow - startFrom));
-				                		 parentjson.put("statusdesc", "Error occurred in uploading row : "+(currentRow - startFrom));
-				                		 CommonMethodImpl.putFailedJson(parentjson, 5004);
+				                		 mms.writeLogs("Error occurred in uploading row : "+(currentRow - startFrom),0);
 				                	 }
 				                	 
 				                	 }
@@ -939,14 +952,23 @@ public class ProductInterfaceImpl implements ProductInterface
 				                 {
 				                	 System.out.println("No data to import, Please check the file again !!!");
 				                	 errorRowsList.add("No data to import, Please check the file again !!!");
-				                	 parentjson.put("statusdesc", "No data to import, Please check the file again !!!");
-			                		 CommonMethodImpl.putFailedJson(parentjson, 5004);
+				                	 mms.writeLogs("No data to import, Please check the file again !!!",0);
 				                 }
 				            	 
 				            	 ++currentRow;
 				            }
 
 				             fileReader.close();
+				             
+				             if(errorRowsList != null && errorRowsList.size() > 0)
+				             {
+				            	 parentjson.put("statusdesc", errorRowsList);
+		                		 parentjson = CommonMethodImpl.putFailedJson(parentjson, command);
+				             }
+				             else
+				             {
+				            	 parentjson = CommonMethodImpl.putSuccessJson(parentjson, command);
+				             }
 				             output = parentjson.toString();
 							 ////System.out.println("output ::::::::: "+output); 
 							 return output;
