@@ -35,6 +35,7 @@ function loadPage(id)
 		text = "DataTable - Everest Impact";
 	}
 	
+	
 	$('#subHeadding').empty();
 //	$('#subHeadding').append();
 	$('#subHeadding').hide();
