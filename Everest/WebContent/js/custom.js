@@ -44,6 +44,7 @@ function loadPage(id)
 //		text = "Impact - Everest Impact";
 //	}
 	
+	
 	$('#subHeadding').empty();
 //	$('#subHeadding').append(text);
 	$('#subHeadding').hide();

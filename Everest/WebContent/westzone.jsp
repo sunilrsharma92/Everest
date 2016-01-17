@@ -197,9 +197,9 @@
         <!-- Marketing Icons Section -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">
+                <h3 class="page-header">
                     West Zone Everest Impact
-                </h1>
+                </h3>
                 <ol class="breadcrumb">
                     <li><a href="index.jsp">Home</a>
                     </li>
