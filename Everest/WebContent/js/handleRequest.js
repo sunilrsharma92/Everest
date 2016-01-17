@@ -3,6 +3,7 @@ function handleRequest()
 	this.handleLogin = handleLogin;
 	this.handleRegisteration = handleRegisteration;
 	this.handleResetPassword = handleResetPassword;
+	this.handleSubmitReportDetails = handleSubmitReportDetails;
 	this.handleForgotPwd = handleForgotPwd;
 	this.getZoneDetailsRequest = getZoneDetailsRequest;
 	function handleLogin(emailLogin, passLogin, userType, otpLogin)
@@ -76,6 +77,28 @@ function handleRequest()
 		catch (e)
 		{
 			console.log("handleRequest handleResetPassword Exception ::" + e);
+		}
+	}
+	function handleSubmitReportDetails(selectCat, peopleAtt, peopEnq, totBud, eventDate, eventTime, editor)
+	{
+		try
+		{
+			var report = {};
+			report.selectCat = selectCat;
+			report.peopleAtt = peopleAtt;
+			report.peopEnq = peopEnq;
+			report.totBud = totBud;
+			report.eventDate = eventDate;
+			report.eventTime = eventTime;
+			report.editor = editor;
+			report.command = 9001;
+			var strJsonMsgForReport = JSON.stringify(report);
+			handleAllListResponse(strJsonMsgForReport);
+			console.log("handleRequest     handleSubmitReportDetails     strJsonMsgForReport : " + strJsonMsgForReport);
+		}
+		catch (e)
+		{
+			console.log("handleRequest handleSubmitReportDetails Exception ::" + e);
 		}
 	}
 	function getZoneDetailsRequest()

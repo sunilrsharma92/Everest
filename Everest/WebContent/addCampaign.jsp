@@ -1,18 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>Everest Impact-West Zone</title>
-</head>
-
-<body>
     <div class="container">
 
         <!-- Marketing Icons Section -->
@@ -40,7 +28,7 @@
         <div class="col-md-4 ">
         <div class="row form-group">
         <table>
-        	<tr><td> Category: </td><td><select class="form-control textbox"  placeholder="select category">
+        	<tr><td> Category: </td><td><select class="form-control textbox"  placeholder="select category" id="selectCat">
 										<option value="0">Select category</option>
 										<option value="1">Mass Media</option>
 										<option value="2">Shop Display</option>
@@ -49,11 +37,11 @@
 										<option value="5">Others</option>
 														
 								</select></td></tr>
-           <tr><td> Event Date: </td><td><input class="form-control " type="text" ></td></tr>
-           <tr><td> Event Time: </td><td><input class="form-control" id="reporttime" value="" placeholder="Now"></td></tr>
-            <tr><td>Total People Attended:</td><td> <input class="form-control " type="text"></td></tr>
-            <tr><td>Total People Enquiry:</td><td> <input class="form-control " type="text"></td></tr>
-            <tr><td>Total Budget:</td><td> <input class="form-control " type="text"></td></tr>
+           <tr><td> Event Date: </td><td><input class="form-control " type="text" id="eventDate"></td></tr>
+           <tr><td> Event Time: </td><td><input class="form-control" id="eventTime" placeholder="Now"></td></tr>
+            <tr><td>Total People Attended:</td><td> <input class="form-control " id="peopleAtt" type="text"></td></tr>
+            <tr><td>Total People Enquiry:</td><td> <input class="form-control " id="peopEnq" type="text"></td></tr>
+            <tr><td>Total Budget:</td><td> <input class="form-control " id="totBud" type="text"></td></tr>
             </table>
          </div>
             
@@ -65,34 +53,48 @@
           
     <textarea id="editor"></textarea>
         
-    </textarea>
          </div><!--/row--> 
-         <div class="row well">
-         <div class="col-md-2">
-             <strong>Upload images:</strong>
-         </div><!--/col-md-3-->
-          <div class="col-md-3">
-             <span class="btn btn-default btn-file">Browse <input type="file"></span>
-         </div><!--/col-md-3-->
-         <div class="col-md-1">
-             
-         </div><!--/col-md-1-->
-
-          <div class="col-md-2">
-             <strong>Upload excel data:</strong>
-         </div><!--/col-md-3--> 
-         <div class="col-md-3">
-             <span class="btn btn-default btn-file">Browse <input type="file"></span>
-         </div><!--/col-md-3-->
-             
-             
-             
-         </div><!--/row--> 
-        *On submitting the Branch Manage will get notified via email and sms.<input type="button" name="Submit" value="Submit Report">
+         
+         <form method="post" action="UploadServlet" id="uploadFile" enctype="multipart/form-data">
+            Select file to upload: <input type="file" name="fileName"  id="fileName"/>
+            <br/><br/>
+            <input type="submit" value="Upload" id="upldBtn"/>
+            
+            
+            <script type="text/javascript" src="js/jquery.form.js"></script>
+			<script type="text/javascript">
+						$(document).ready(function(){
+							try
+							{
+							$("#fileName").change(function()
+							{
+								alert("fileNameChanges");
+								$(".indexoverlay").show();
+								$("#upldBtn").trigger("click");
+							});
+							
+							$('#uploadFile').ajaxForm({
+							success : function (msg)
+							{
+								console.log("Successs ");
+							}
+						});
+							}
+							catch (e) 
+							{
+								console.log("Exception in uploading file on jsp : "+e);
+							}
+							
+						});
+						
+			</script>
+            
+        </form>
+         
+        *On submitting the Branch Manage will get notified via email and sms.<input type="button" onclick="submitReportDetails();" id="submitReport" name="Submit" value="Submit Report">
+        </div><!--/row--> 
         
-        
-</div>
-               <script type="text/javascript">
+     <script type="text/javascript">
         $(document).ready(function () {
             $('#editor').jqxEditor({
                 height: "400px",
@@ -105,6 +107,3 @@
             
         });
     </script>
-</body>
-
-</html>

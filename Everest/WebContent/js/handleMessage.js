@@ -59,6 +59,50 @@ function zoneDetailsResponse(response)
 	}
 	$(".indexoverlay").show().delay(100).fadeOut();
 }
+function reportDetailsResponse(response)
+{
+	var action = response.status;
+	var statusdesc = response.statusdesc;
+	if(action != 3)
+	{
+		jqueryconform("Message", statusdesc);
+	}
+	else
+	{
+		
+	}
+	$(".indexoverlay").show().delay(100).fadeOut();
+}
+
+function reportDetailsResponse(response)
+{
+	var action = response.status;
+	var statusdesc = response.statusdesc;
+	if(action != 3)
+	{
+		jqueryconform("Message", statusdesc);
+	}
+	else
+	{
+		
+	}
+	$(".indexoverlay").show().delay(100).fadeOut();
+}
+
+function reportDetailsResponse(response)
+{
+	var action = response.status;
+	var statusdesc = response.statusdesc;
+	if(action != 3)
+	{
+		jqueryconform("Message", statusdesc);
+	}
+	else
+	{
+		
+	}
+	$(".indexoverlay").show().delay(100).fadeOut();
+}
 function handleLoginResponse(response)
 {
 	try

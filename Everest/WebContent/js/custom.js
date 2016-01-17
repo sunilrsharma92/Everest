@@ -3,6 +3,7 @@ var objhandleRequest = new handleRequest();
 
 $(document).ready( function(){
 	$('#content').load('indexp1.jsp');
+
 });
 
 function loadPage(id)
