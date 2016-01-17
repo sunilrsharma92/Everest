@@ -78,12 +78,15 @@ function handleRequest()
 			console.log("handleRequest handleResetPassword Exception ::" + e);
 		}
 	}
-	function getZoneDetailsRequest()
+	function getZoneDetailsRequest(action, zoneid, cityid)
 	{
 		try
 		{
 			var getZoneDetails = {};
 			getZoneDetails.command = 1057;
+			getZoneDetails.action = action;
+			getZoneDetails.zoneid = +zoneid;
+			getZoneDetails.cityid = +cityid;
 			var strJsonMsgForZoneDetails = JSON.stringify(getZoneDetails);
 			handleAllListResponse(strJsonMsgForZoneDetails);
 			console.log("handleRequest     getZoneDetailsRequest     strJsonMsgForResetPwd : " + strJsonMsgForZoneDetails);

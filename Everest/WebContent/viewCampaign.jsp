@@ -11,34 +11,119 @@
 
     <title>Everest Impact-West Zone</title>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            
+        	var data = [{'Category' : 'Dealer',	'Date' :'1/12/2016',	'Name' : 'Ram',	'Email' :'ram@gmail.com',	'Mobile' :'1234567890',	'Zone' :'west',	'State' :'maharashtra',	'City' :'mumbai'},
+        	            {'Category' : 'Dealer',	'Date' :'1/12/2016',	'Name' : 'Sham',	'Email' :'ram@gmail.com',	'Mobile' :'1234567890',	'Zone' :'west',	'State' :'maharashtra',	'City' :'mumbai'},
+        	            {'Category' : 'Dealer',	'Date' :'1/12/2016',	'Name' : 'Rahul',	'Email' :'ram@gmail.com',	'Mobile' :'1234567890',	'Zone' :'west',	'State' :'maharashtra',	'City' :'mumbai'},
+        	            {'Category' : 'Dealer',	'Date' :'1/12/2016',	'Name' : 'Sunil',	'Email' :'ram@gmail.com',	'Mobile' :'1234567890',	'Zone' :'west',	'State' :'maharashtra',	'City' :'mumbai'},
+        	            {'Category' : 'Dealer',	'Date' :'1/12/2016',	'Name' : 'Deva',	'Email' :'ram@gmail.com',	'Mobile' :'1234567890',	'Zone' :'west',	'State' :'maharashtra',	'City' :'mumbai'}
+        	            ];
+
+        	var source =
+            {
+            		localdata : data,
+                dataType: "json",
+                dataFields: [
+                     { name: 'Name', type: 'string' },
+                     { name: 'Mobile No', type: 'number' },
+                     { name: 'Date', type: 'date' },
+                     { name: 'Email', type: 'string' },
+                     { name: 'City', type: 'string' },
+                     { name: 'State', type: 'sting' },
+                     { name: 'Zone', type: 'string' },
+                     { name: 'Category', type: 'string' },
+                     { name: 'Address', type: 'string' }
+                ], 
+            };
+            var dataAdapter = new $.jqx.dataAdapter(source);
+            $("#dataTable").jqxGrid(
+            {
+                source: dataAdapter,
+                pageable: true,
+                altRows: true,
+                filterable: true,
+                filterMode: 'advanced',
+                showfilterrow:true,
+                selectionmode: 'multiplecellsextended',
+                width: '100%',
+                columns: [
+                  { text: 'Name', cellsAlign: 'center', align: 'center', dataField: 'Name', width: '20%' },
+                  { text: 'Date', cellsAlign: 'center', align: 'center', dataField: 'Date', width: '20%' },
+                  { text: 'Zone', cellsAlign: 'center', align: 'center', dataField: 'Zone', width: '10%' },
+                  { text: 'Category', cellsAlign: 'center', align: 'center', dataField: 'Category', width: '20%' },
+                  { text: 'State', cellsAlign: 'center', align: 'center', dataField: 'State', width: '15%' },
+                  { text: 'Email', cellsAlign: 'center', align: 'center', dataField: 'Email', width: '15%', hidden:true },
+                  { text: 'Contact Num', cellsAlign: 'center', align: 'center', dataField: 'Mobile', width: '15%' , hidden:true},
+                  { text: 'City', cellsAlign: 'center', align: 'center', dataField: 'City',width: '15%' }
+                ]
+            });
+            
+            $("#excelExport").jqxButton();
+            $("#xmlExport").jqxButton();
+            $("#csvExport").jqxButton();
+            $("#tsvExport").jqxButton();
+            $("#htmlExport").jqxButton();
+            $("#jsonExport").jqxButton();
+            $("#pdfExport").jqxButton();
+
+            $("#excelExport").click(function () {
+                $("#dataTable").jqxGrid('exportdata', 'xls', 'jqxGrid');           
+            });
+            $("#xmlExport").click(function () {
+                $("#dataTable").jqxGrid('exportdata', 'xml', 'jqxGrid');
+            });
+            $("#csvExport").click(function () {
+                $("#dataTable").jqxGrid('exportdata', 'csv', 'jqxGrid');
+            });
+            $("#tsvExport").click(function () {
+                $("#dataTable").jqxGrid('exportdata', 'tsv', 'jqxGrid');
+            });
+            $("#htmlExport").click(function () {
+                $("#dataTable").jqxGrid('exportdata', 'html', 'jqxGrid');
+            });
+            $("#jsonExport").click(function () {
+                $("#dataTable").jqxGrid('exportdata', 'json', 'jqxGrid');
+            });
+            $("#pdfExport").click(function () {
+                $("#dataTable").jqxGrid('exportdata', 'pdf', 'jqxGrid');
+            });
+            
+        });
+    </script>	
+    
 </head>
 
-<body>
-
-   
-  <!--*****************************************************************************************************************  -->
-  <!-- Marketing Icons Section -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h3 class="page-header">
-                    My Most Recent Campaign Reports
+<body class='default'>
+<div class="container">
+<div id="dataTable"></div>
+<div style='margin-top: 20px;'>
+            <div style='float: left;'>
+                <input type="button" value="Export to Excel" id='excelExport' />
                 </h3>
                 <ol class="breadcrumb">
                     <li><a href="index.jsp">Home</a>
-                    </li>
-                    <li class="active">Recent Activities</li>
                 </ol>
             </div>
+            <div style='margin-left: 10px; float: left;'>
+                <input type="button" value="Export to XML" id='xmlExport' />
             </div>
-        <!-- /.row -->
-  
-  
-  
-  
-  
-  
-  
-  <!--*****************************************************************************************************************  -->
+            <div style='margin-left: 10px; float: left;'>
+                <input type="button" value="Export to CSV" id='csvExport' />
+            </div>
+            <div style='margin-left: 10px; float: left;'>
+                <input type="button" value="Export to TSV" id='tsvExport' />
+            <div style='margin-left: 10px; float: left;'>
+                <input type="button" value="Export to HTML" id='htmlExport' />
+            </div>
+            <div style='margin-left: 10px; float: left;'>
+                <input type="button" value="Export to JSON" id='jsonExport' />
+            </div>
+            <div style='margin-left: 10px; float: left;'>
+                <input type="button" value="Export to PDF" id='pdfExport' />
+            </div>
+</div>
 
 </body>
 
