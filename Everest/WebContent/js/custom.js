@@ -46,7 +46,9 @@ function loadPage(id)
 	
 	$('#subHeadding').empty();
 //	$('#subHeadding').append(text);
+	$('#subHeadding').hide();
 	$('#content').load(id+'.jsp');
+	
 }
 
 function getZoneDetails(action, zoneid, cityid)

@@ -127,25 +127,25 @@
                     </li>
                     
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> My Account<b class="caret"></b></a>
                         <ul class="dropdown-menu">
+<!--                             <li> -->
+<!--                                 <a onclick="loadPage('profile');">Profile</a> -->
+<!--                             </li> -->
                             <li>
-                                <a onclick="loadPage('profile');">Profile</a>
+                                <a onclick="loadPage('addCampaign');"><span class="glyphicon glyphicon-plus"></span>  Add Campaign</a>
                             </li>
                             <li>
-                                <a onclick="loadPage('addCampaign');">Add Campaign</a>
+                                <a onclick="loadPage('viewCampaign');"><span class="glyphicon glyphicon-retweet"></span>  View Campaign</a>
                             </li>
                             <li>
-                                <a onclick="loadPage('viewCampaign');">View Campaign</a>
-                            </li>
-                            <li>
-                                <a href="Login.jsp">Logout</a>
+                                <a href="Login.jsp"><span class="glyphicon glyphicon-log-out"></span>  Logout</a>
                             </li>
                             
                         </ul>
                     </li>
                     <li>
-                                <a href="help.jsp">Help</a>
+                                <a onclick="loadPage('help');"><span class="glyphicon glyphicon-question-sign "></span> Help</a>
                     </li>
                 </ul>
             </div>
@@ -218,7 +218,6 @@
         <!-- /.row -->
 
         <!-- Portfolio Section -->
-        <hr>
  </div>
    </div>
    <!--    *************************************************************************************************** -->

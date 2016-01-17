@@ -1,17 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+   
 
-<div class="container">
-<div class="row">
+ <!--****************************************************************************************************************************************  -->
+ <!-- Marketing Icons Section -->
+        <div class="row">
             <div class="col-lg-12">
+                <h3 class="page-header">
+                   Most Recent Campaign Reports
+                </h3>
                 <ol class="breadcrumb">
                     <li><a href="index.jsp">Home</a>
                     </li>
-                    <li class="active">Impact</li>
+                    <li class="active">Recent Campaigns</li>
                 </ol>
             </div>
             </div>
-            
+        <!-- /.row -->
  <div class="container well " style="width: ; height:; margin-top:20px">
  <h4>Dealer meet at Mumbai</h4>
         <div class="row well" style="border:none;">
@@ -73,6 +78,3 @@
             <button style="margin-top:15px;">Read More</button>
         </div><!--/col-md-6--> 
         </div>
- </div>
- </div>
-  <!--*****************************************************************************************************************************************  -->

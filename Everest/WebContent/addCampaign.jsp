@@ -18,9 +18,9 @@
         <!-- Marketing Icons Section -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">
+                <h3 class="page-header">
                     Add New Activity
-                </h1>
+                </h3>
                 <ol class="breadcrumb">
                     <li><a href="index.jsp">Home</a>
                     </li>
@@ -37,7 +37,7 @@
             <img src="https://placehold.it/350x150image">
             <span class="btn btn-default btn-file" style="width: 350px; border-radius: 0;">Browse <input type="file"></span>
         </div><!--/col-md-6-->  
-        <div class="col-md-4 ">
+        <div class="col-md-6 ">
         <div class="row form-group">
         <table>
         	

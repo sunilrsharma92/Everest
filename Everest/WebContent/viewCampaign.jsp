@@ -101,6 +101,10 @@
 <div style='margin-top: 20px;'>
             <div style='float: left;'>
                 <input type="button" value="Export to Excel" id='excelExport' />
+                </h3>
+                <ol class="breadcrumb">
+                    <li><a href="index.jsp">Home</a>
+                </ol>
             </div>
             <div style='margin-left: 10px; float: left;'>
                 <input type="button" value="Export to XML" id='xmlExport' />
@@ -110,7 +114,6 @@
             </div>
             <div style='margin-left: 10px; float: left;'>
                 <input type="button" value="Export to TSV" id='tsvExport' />
-            </div>
             <div style='margin-left: 10px; float: left;'>
                 <input type="button" value="Export to HTML" id='htmlExport' />
             </div>
