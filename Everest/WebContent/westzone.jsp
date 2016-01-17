@@ -14,12 +14,91 @@
     <script type="text/javascript">
         $(document).ready(function () {
             // prepare chart data as an array
-            var sampleData = [
-                    { Ads: 'Mass Media', Running: 10, Swimming: 10, Cycling: 25, Cyc: 25 },
-                    { Ads: 'Shop Display', Running: 25, Swimming: 25 },
-                    { Ads: 'Direct Central Pgm', Running: 30, Swimming: 10, Cycling: 20, Cyc: 20 },
-                    { Ads: 'Schemes', Running: 30, Swimming: 20 },
-                    { Ads: 'Other', Running: 10, Swimming: 20}
+            
+              var data = $.session.get("zonedetails");
+            
+            var zonedetails = JSON.parse(data);
+            var sampleData = [];
+            
+            var 		tvcable = 0;
+            var 		radiofm = 0;
+            var 		newspapers = 0;
+            var 		wallpaintings = 0;
+            
+            var 		dealerboards = 0;
+            var 		pop = 0;
+            
+            var 		ctp = 0;
+            var 		dealermeets = 0;
+            var 		vancampaign = 0;
+            var       mandimelas = 0;
+            
+            var 		stocklist = 0;
+            var 		subdealers = 0;
+            
+            var 		giveaways = 0;
+            var 		misc = 0;
+            
+            for(var i in zonedetails)
+            {
+	            var 		key = zonedetails[i].key;
+	            var 		state = zonedetails[i].state;
+	            var       city = zonedetails[i].city;
+	            var 		importdate = zonedetails[i].importdate;
+	            var 		importtime = zonedetails[i].importtime;
+	            var 		total = zonedetails[i].total;
+// 	            MassMedia
+	            tvcable = tvcable + parseInt(zonedetails[i].tvcable);
+	            radiofm = radiofm + parseInt(zonedetails[i].radiofm);
+	            newspapers = newspapers + parseInt(zonedetails[i].newspapers);
+	            wallpaintings = wallpaintings + parseInt(zonedetails[i].wallpaintings);
+	            
+// 	            ShopDisplay
+	            dealerboards = dealerboards + parseInt(zonedetails[i].dealerboards);
+	            pop = pop + parseInt(zonedetails[i].pop);
+	            
+// 	            Direct Central Program
+	            ctp = ctp + parseInt(zonedetails[i].ctp);
+	            dealermeets = dealermeets + parseInt(zonedetails[i].dealermeets);
+	            vancampaign = vancampaign + parseInt(zonedetails[i].vancampaign);
+	            mandimelas = mandimelas + parseInt(zonedetails[i].mandimelas);
+	            
+// 	            Schemes
+	            stocklist = stocklist + parseInt(zonedetails[i].stocklist);
+	            subdealers = subdealers + parseInt(zonedetails[i].subdealers);
+	            
+// 	            Others
+	            giveaways = giveaways + parseInt(zonedetails[i].giveaways);
+	            misc = misc + parseInt(zonedetails[i].misc);
+            	
+//             sampleData.push(
+//             	{ Ads: 'Mass Media', tvcable: tvcable, radiofm: radiofm, newspapers: newspapers, wallpaintings: wallpaintings },
+//                 { Ads: 'Shop Display', dealerboards: dealerboards, pop: pop },
+//                 { Ads: 'Direct Central Pgm', ctp: ctp, dealermeets: dealermeets, vancampaign: vancampaign, mandimelas: mandimelas },
+//                 { Ads: 'Schemes', stocklist: stocklist, subdealers: subdealers },
+//                 { Ads: 'Other', giveaways: giveaways, misc: misc}
+//             );
+            
+			 }
+            
+            console.log("sampleData : "+sampleData);
+            console.log("\n tvcable  : "+tvcable+"\n radiofm :  "+radiofm+"\n newspapers  : "+newspapers+"\n wallpaintings :  "+wallpaintings+
+            					"\n dealerboards  : "+dealerboards+"\n pop :  "+pop+
+            					"\n ctp : "+ctp+"\n dealermeets :  "+dealermeets+"\n vancampaign  : "+vancampaign+"\n mandimelas :  "+mandimelas+
+            					"\n giveaways : "+giveaways+"\n misc :  "+misc);
+            sampleData = [
+                          
+										{ Ads: 'Mass Media', tvcable: tvcable, radiofm: radiofm, newspapers: newspapers, wallpaintings: wallpaintings },
+										{ Ads: 'Shop Display', dealerboards: dealerboards, pop: pop },
+										{ Ads: 'Direct Central Pgm', ctp: ctp, dealermeets: dealermeets, vancampaign: vancampaign, mandimelas: mandimelas },
+										{ Ads: 'Schemes', stocklist: stocklist, subdealers: subdealers },
+										{ Ads: 'Other', giveaways: giveaways, misc: misc}
+
+//                     { Ads: 'Mass Media', Running: tvcable, Swimming: radiofm, Cycling: newspapers, Cyc: wallpaintings },
+//                     { Ads: 'Shop Display', Running: dealerboards, Swimming: pop },
+//                     { Ads: 'Direct Central Pgm', Running: ctp, Swimming: dealermeets, Cycling: vancampaign, Cyc: mandimelas },
+//                     { Ads: 'Schemes', Running: stocklist, Swimming: subdealers },
+//                     { Ads: 'Other', Running: giveaways, Swimming: misc}
                     
                 ];
             // prepare jqxChart settings
@@ -49,9 +128,9 @@
                     },
                 valueAxis:
                 {
-                    unitInterval: 10,
+//                     unitInterval: 10,
                     minValue: 0,
-                    maxValue: 100,
+//                     maxValue: 100,
                     title: { text: 'Types of ads' },
                     labels: { horizontalAlignment: 'right' },
                     tickMarks: { color: '#BCBCBC' }
@@ -64,10 +143,24 @@
                             columnsGapPercent: 50,
                             seriesGapPercent: 0,
                             series: [
-                                    { dataField: 'Cyc', displayText: 'tv/cable',color :'red' },
-                                    { dataField: 'Running', displayText: 'tv',color :'#B20000' },
-                                    { dataField: 'Swimming', displayText: 'Shop', color :'#AF3535' },
-                                    { dataField: 'Cycling', displayText: 'schene', color :'#BD8080'}
+                                    { dataField: 'tvcable', displayText: 'Tv/Cable',color :'red' },
+                                    { dataField: 'radiofm', displayText: 'Radio-Fm',color :'#B20000' },
+                                    { dataField: 'newspapers', displayText: 'News Paper', color :'#AF3535' },
+                                    { dataField: 'wallpaintings', displayText: 'Wall Paintings', color :'#BD8080'},
+                                    
+                                    { dataField: 'dealerboards', displayText: 'Dealer Boards',color :'red' },
+                                    { dataField: 'pop', displayText: 'POP"s',color :'#B20000' },
+                                    
+                                    { dataField: 'ctp', displayText: 'CTP',color :'red' },
+                                    { dataField: 'dealermeets', displayText: 'Dealer Meets',color :'#B20000' },
+                                    { dataField: 'vancampaign', displayText: 'Van Campaign', color :'#AF3535' },
+                                    { dataField: 'mandimelas', displayText: 'Mandi Melas', color :'#BD8080'},
+                                    
+                                    { dataField: 'stocklist', displayText: 'StockList', color :'#AF3535' },
+                                    { dataField: 'subdealers', displayText: 'Sub Dealers', color :'#BD8080'},
+                                    
+                                    { dataField: 'giveaways', displayText: 'Give Aways', color :'#AF3535' },
+                                    { dataField: 'misc', displayText: 'Misc', color :'#BD8080'}
                                 ]
                         }
                     ]
@@ -139,45 +232,38 @@
             </div><!--/col-md-3-->
             <div class="col-md-2">
                 <div class="dropdown">
-                  <button class="btn btn-default dropdown-toggle fix" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  Zone
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">Central</a></li>
-                    <li><a href="#">East</a></li>
-                    <li><a href="#">West</a></li>
-                    <li><a href="#">North</a></li>
-                   
-                    <li><a href="#">South</a></li>
-                </ul>
+                <select class="form-control textbox"  placeholder="Filter By Zone">
+										<option value="0">Filter By Zone</option>
+										<option value="1">Central</option>
+										<option value="2">East</option>
+										<option value="3">West</option>
+										<option value="4">North</option>
+										<option value="5">South</option>
+														
+			</select>
             </div>
             </div><!--/col-md-3-->
             <div class="col-md-2">
                 <div class="dropdown">
-                  <button class="btn btn-default dropdown-toggle fix" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  City
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">w1-Mumbai</a></li>
-                    <li><a href="#">w2-Thane/Palghar</a></li>
-                    <li><a href="#">w3-Raigad</a></li>
-                    <li><a href="#">w4-Nasik/Ahmednagar</a></li>
-                    <li><a href="#">w5-Pune/Solapur</a></li>
-                    <li><a href="#">w6</a></li>
-                    <li><a href="#">w7-Aurangabad</a></li>
-                    <li><a href="#">w8-Ratnagiri/Sindhudurg</a></li>
-                    <li><a href="#">w9-Dhule/Jalgaon/Nandurbar</a></li>
-                    <li><a href="#">w10-Valsad</a></li>
-                    <li><a href="#">w11-Ahmedabad</a></li>
-                    <li><a href="#">w12-Saurashtra</a></li>
-                    <li><a href="#">w13-Surat</a></li>
-                    <li><a href="#">w14-Baroda</a></li>
-                    <li><a href="#">w15-</a></li>
-                    <li><a href="#">w16-Vidarbha</a></li>
-                    
-                </ul>
+                    <select class="form-control textbox"  placeholder="Filter By City">
+                    <option value="0">Filter By City</option>
+                    <option value="43">w1-Mumbai</option>
+                    <option value="44">w2-Thane/Palghar</option>
+                    <option value="45">w3-Raigad</option>
+                    <option value="46">w4-Nasik/Ahmednagar</option>
+                    <option value="47">w5-Pune/Solapur</option>
+                    <option value="48">w6-kolapur/Satara</option>
+                    <option value="49">w7-Aurangabad</option>
+                    <option value="50">w8-Ratnagiri/Sindhudurg</option>
+                    <option value="51">w9-Dhule/Jalgaon/Nandurbar</option>
+                    <option value="52">w10-Valsad</option>
+                    <option value="53">w11-Ahmedabad</option>
+                    <option value="54">w12-Saurashtra</option>
+                    <option value="55">w13-Surat</option>
+                    <option value="56">w14-Baroda</option>
+                    <option value="57">w15-Goa</option>
+                    <option value="58">w16-Vidarbha</option>
+                 </select>
             </div>
             </div><!--/col-md-3-->
             <div class="col-md-2">

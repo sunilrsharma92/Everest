@@ -48,16 +48,25 @@ function handleResetPasswordResponse(response)
 }
 function zoneDetailsResponse(response)
 {
-	var action = response.status;
-	var statusdesc = response.statusdesc;
-	if(action != 3)
+	try
 	{
-		jqueryconform("Message", statusdesc);
+		var action = response.status;
+		var statusdesc = response.statusdesc;
+		console.log("Response : "+JSON.stringify(response));
+		if(action != 3)
+		{
+			jqueryconform("Message", statusdesc);
+		}
+		else
+		{
+			$.session.set("zonedetails",JSON.stringify(response.zoneDetails));
+		}
+		$(".indexoverlay").show().delay(100).fadeOut();
 	}
-	else
+	catch(e)
 	{
+		console.log("zoneDetailsResponse : : Exception : "+e);
 	}
-	$(".indexoverlay").show().delay(100).fadeOut();
 }
 function reportDetailsResponse(response)
 {
@@ -116,7 +125,9 @@ function handleLoginResponse(response)
 		if(action != 3)
 		{
 			$(".indexoverlay").hide();
-			jqueryconform("Message", statusdesc);
+			$("#loginalerts").empty();
+			$("#loginalerts").append(statusdesc);
+//			jqueryconform("Message", statusdesc);
 		}
 		else
 		{

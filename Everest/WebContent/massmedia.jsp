@@ -10,136 +10,108 @@
     <meta name="author" content="">
 
     <title>Everest Impact-West Zone</title>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // prepare chart data as an array
+            var sampleData = [
+                    { Ads: 'W1', Running: 10, Swimming: 10, Cycling: 25, Cyc: 25 },
+                    { Ads: 'W2', Running: 25, Swimming: 25, Cycling: 25, Cyc: 25 },
+                    { Ads: 'W3', Running: 30, Swimming: 10, Cycling: 20, Cyc: 20 },
+                    { Ads: 'W4', Running: 30, Swimming: 20, Cycling: 25, Cyc: 5 },
+                    { Ads: 'W5', Running: 30, Swimming: 20, Cycling: 5, Cyc: 2 },
+                    { Ads: 'W6', Running: 30, Swimming: 20, Cycling: 15, Cyc: 15 },
+                    { Ads: 'W7', Running: 30, Swimming: 20, Cycling: 2, Cyc: 20 },
+                    { Ads: 'W8', Running: 30, Swimming: 20, Cycling: 5, Cyc: 05 },
+                    { Ads: 'W9', Running: 30, Swimming: 20 , Cycling: 21, Cyc: 6},
+                    { Ads: 'W10', Running: 30, Swimming: 20, Cycling: 18, Cyc: 2 },
+                    { Ads: 'W11', Running: 30, Swimming: 20, Cycling: 15, Cyc: 5 },
+                    { Ads: 'W12', Running: 30, Swimming: 20, Cycling: 22, Cyc: 22 },
+                    { Ads: 'W13', Running: 30, Swimming: 20, Cycling: 6, Cyc: 21 },
+                    { Ads: 'W14', Running: 30, Swimming: 20, Cycling: 5, Cyc: 18 },
+                    { Ads: 'W15', Running: 30, Swimming: 20, Cycling: 5, Cyc: 22 },
+                    { Ads: 'W16', Running: 10, Swimming: 20, Cycling: 25, Cyc: 25}
+                    
+                ];
+            // prepare jqxChart settings
+            var settings = {
+                title: "Upto till Date Overview",
+                description: "Overview of Activities",
+                enableAnimations: true,
+                showLegend: true,
+                padding: { left: 5, top: 5, right: 5, bottom: 5 },
+                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+                source: sampleData,
+                xAxis:
+                    {
+                        dataField: 'Ads',
+                        unitInterval: 1,
+                        axisSize: 'auto',
+                        tickMarks: {
+                            visible: true,
+                            interval: 1,
+                            color: '#B20000'
+                        },
+                        gridLines: {
+                            visible: false,
+                            interval: 1,
+                            color: '#BCBCBC'
+                        }
+                    },
+                valueAxis:
+                {
+                    unitInterval: 10,
+                    minValue: 0,
+                    maxValue: 100,
+                    title: { text: 'Investments(in lacs)' },
+                    labels: { horizontalAlignment: 'right' },
+                    tickMarks: { color: '#BCBCBC' }
+                },
+                colorScheme: 'scheme06',
+                seriesGroups:
+                    [
+                        {
+                            type: 'stackedcolumn',
+                            columnsGapPercent: 50,
+                            seriesGapPercent: 0,
+                            series: [
+                                    { dataField: 'Cyc', displayText: 'TV/Cable',color :'red' },
+                                    { dataField: 'Running', displayText: 'Radio/FM',color :'#B20000' },
+                                    { dataField: 'Swimming', displayText: 'Newspaper', color :'#AF3535' },
+                                    { dataField: 'Cycling', displayText: 'Wall Painting', color :'#BD8080'}
+                                ]
+                        }
+                    ]
+            };
+            // setup the chart
+            $('#chartContainer').jqxChart(settings);
+        });
+    </script>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/modern-business.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
 </head>
 
 <body>
 
-    <!-- Navigation -->
-   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.jsp">
-                    <img src="images/logo.jpg">
-                </a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="index.jsp">Home</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Zones <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="centralzone.jsp">Central Zone</a>
-                            </li>
-                            <li>
-                                <a href="eastzone.jsp">East Zone</a>
-                            </li>
-                            <li>
-                                <a href="westzone.jsp">West Zone</a>
-                            </li>
-                            <li>
-                                <a href="northzone.jsp">North Zone</a>
-                            </li>
-                            <li>
-                                <a href="southzone.jsp">South Zone</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Activities <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="activity.jsp">Mass Media</a>
-                                
-                            </li>
-                            <li>
-                                <a href="#">Shop Display</a>
-                            </li>
-                            <li>
-                                <a href="#">Direct Central Pgm</a>
-                            </li>
-                            <li>
-                                <a href="#">Schemes</a>
-                            </li>
-                            <li>
-                                <a href="#">Others</a>
-                            </li>
-                            
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="datatable.jsp">DataTable</a>
-                    </li>
-                    <li>
-                        <a href="impact.jsp">Impact</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Corporate Communication <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">Product Brochures</a>
-                            </li>
-                            <li>
-                                <a href="#">Brand Manual</a>
-                            </li>
-                            <li>
-                                <a href="#">Latest Companies</a>
-                            </li>
-                            <li>
-                                <a href="#">Poster</a>
-                            </li>
-                            <li>
-                                <a href="#">Exibition</a>
-                            </li>
-                        </ul>
-                    </li>
-                    
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        <li>
-                                <a href="#">Profile</a>
-                            </li>
-                            <li>
-                                <a href="#">Logout</a>
-                            </li>
-                            
-                        </ul>
-                    </li>
-                    <li>
-                                <a href="help.jsp">Help</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+   
 
 <!--*********************************************************************************************************************************  -->
-
+ <!-- Marketing Icons Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header">
+                   Overview of Mass Media
+                </h3>
+                <ol class="breadcrumb">
+                    <li><a href="index.jsp">Home</a>
+                    </li>
+                    <li class="active">Mass Media</li>
+                </ol>
+            </div>
+            </div>
+        <!-- /.row -->
 <div class="container">
 	
-	
+	<div id='chartContainer' style="width:100%; height:500px"/>
 
 </div>
 
@@ -147,37 +119,6 @@
 
 
 <!--***********************************************************************************************************************************  -->
-        <hr>
-<div class="container">
-    
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                   <p>Copyright &copy; Everest Impact 2015</p>
-                    
-                </div>
-            </div>
-        </footer>
-
-    </div>
-    <!-- /.container -->
-<div class="footer navbar-fixed-bottom" style="background-color:rgba(18, 106, 188, 0.71)">
-    <img src="images/footimg.jpg">
-    </div>
-    <!-- jQuery -->
-    <script src="js/bootstrap/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-    </script>
-
-</body>
+      </body>
 
 </html>

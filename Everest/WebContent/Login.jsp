@@ -66,11 +66,11 @@ body{
 	color: #fff;
 	font-family: 'Exo', sans-serif;
 	font-size: 35px;
-	font-weight: 200;
+	font-weight: 00;
 }
 
 .header div span{
-	color: #5379fa !important;
+	color: #FF0000 !important;
 }
 
 .login{
@@ -113,11 +113,11 @@ body{
 .login input[type=button]{
 	width: 260px;
 	height: 35px;
-	background: #fff;
+	background: #F00;
 	border: 1px solid #fff;
 	cursor: pointer;
 	border-radius: 2px;
-	color: #a18d6c;
+	color: #FFF;
 	font-family: 'Exo', sans-serif;
 	font-size: 16px;
 	font-weight: 400;
@@ -156,7 +156,7 @@ body{
 }
 
 #loading-img {
-	background: url(loader_img/spinner.gif) center center no-repeat;
+	background: url(loader_img/LoadingNew.gif) center center no-repeat;
 	background-size: 100px 100px;
 	height: 50%;
 	z-index: 100000;
@@ -200,12 +200,19 @@ body{
 			<div>Everest<span>Impact</span></div>
 		</div>
 		<br>
-		<div class="login">
+		<div class="login" style="display:block">
 				<input type="text" placeholder="Username" name="user" id="emailLogin"><br>
 				<input type="password" placeholder="Password" name="password" id="passLoginTemp"><br>
 				<input type="text" placeholder="OTP" name="otp" id="otpLogin" style="display:none;"><br>
 				<div id="loginalerts"></div><br>
 				<input type="button" value="Login" onclick="login();">
+		</div>
+		<div class="login" style="display:none;">
+				<input type="text" placeholder="Username" name="user" id="emailLogin"><br>
+				<input type="password" placeholder="Password" name="password" id="passLoginTemp"><br>
+				<input type="password" placeholder="Retype-Password" name="re-password" id="passLoginTemp"><br>
+				<div id="loginalerts"></div><br>
+				<input type="button" value="Register" onclick="register();">
 		</div>
     
     

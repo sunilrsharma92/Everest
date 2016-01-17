@@ -6,9 +6,9 @@
         <!-- Marketing Icons Section -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">
+                <h3 class="page-header">
                     Add New Activity
-                </h1>
+                </h3>
                 <ol class="breadcrumb">
                     <li><a href="index.jsp">Home</a>
                     </li>
@@ -25,23 +25,58 @@
             <img src="https://placehold.it/350x150image">
             <span class="btn btn-default btn-file" style="width: 350px; border-radius: 0;">Browse <input type="file"></span>
         </div><!--/col-md-6-->  
-        <div class="col-md-4 ">
+        <div class="col-md-6 ">
         <div class="row form-group">
         <table>
-        	<tr><td> Category: </td><td><select class="form-control textbox"  placeholder="select category" id="selectCat">
-										<option value="0">Select category</option>
-										<option value="1">Mass Media</option>
-										<option value="2">Shop Display</option>
-										<option value="3">Direct Central Pgm</option>
-										<option value="4">Schemes</option>
-										<option value="5">Others</option>
-														
-								</select></td></tr>
+        	
+        	<tr><td> Zone: </td><td>
+        	<select class="form-control textbox"  placeholder="Filter By Zone">
+										<option value="0">Select Zone</option>
+										<option value="1">Central</option>
+										<option value="2">East</option>
+										<option value="3">West</option>
            <tr><td> Event Date: </td><td><input class="form-control " type="text" id="eventDate"></td></tr>
            <tr><td> Event Time: </td><td><input class="form-control" id="eventTime" placeholder="Now"></td></tr>
             <tr><td>Total People Attended:</td><td> <input class="form-control " id="peopleAtt" type="text"></td></tr>
             <tr><td>Total People Enquiry:</td><td> <input class="form-control " id="peopEnq" type="text"></td></tr>
             <tr><td>Total Budget:</td><td> <input class="form-control " id="totBud" type="text"></td></tr>
+										<option value="4">North</option>
+										<option value="5">South</option>
+														
+			</select>
+			</td></tr>
+        	<tr><td> City: </td><td>
+        	<select class="form-control textbox"  placeholder="Select City">
+                    <option value="43">w1-Mumbai</option>
+                    <option value="44">w2-Thane/Palghar</option>
+                    <option value="45">w3-Raigad</option>
+                    <option value="46">w4-Nasik/Ahmednagar</option>
+                    <option value="47">w5-Pune/Solapur</option>
+                    <option value="48">w6-kolapur/Satara</option>
+                    <option value="49">w7-Aurangabad</option>
+                    <option value="50">w8-Ratnagiri/Sindhudurg</option>
+                    <option value="51">w9-Dhule/Jalgaon/Nandurbar</option>
+                    <option value="52">w10-Valsad</option>
+                    <option value="53">w11-Ahmedabad</option>
+                    <option value="54">w12-Saurashtra</option>
+                    <option value="55">w13-Surat</option>
+                    <option value="56">w14-Baroda</option>
+                    <option value="57">w15-Goa</option>
+                    <option value="58">w16-Vidarbha</option>
+                 </select>
+			</td></tr>
+           <tr>
+           <td> Event Time: </td>
+           <td>
+           <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+				<input type="text" class="form-control" value="13:14">
+				<span class="input-group-addon">
+					<span class="glyphicon glyphicon-time"></span>
+				</span>
+			</div>
+			
+			</td>
+			</tr>
             </table>
          </div>
             
@@ -101,9 +136,7 @@
                 width: '100%'
             });
             
-//             $('#reporttime').clockpicker({
-//                 autoclose: true
-//             });
+			$('.clockpicker').clockpicker();
             
         });
     </script>
