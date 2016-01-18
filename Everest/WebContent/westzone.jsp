@@ -14,10 +14,40 @@
     <script type="text/javascript">
         $(document).ready(function () {
             // prepare chart data as an array
+            try
+            {
+            	
+            var response = JSON.parse($.session.get("response"));
             
-              var data = $.session.get("zonedetails");
+            var data = "";
+            var zone = $.session.get("zone");
+            if(zone == 1 || zone == "1")
+            {
+            	data = response.zoneDetails1;
+            }
+            else if(zone == 2 || zone == "2")
+            {
+            	data = response.zoneDetails2;
+            }
+            else if(zone == 3 || zone == "3")
+            {
+            	data = response.zoneDetails3;
+//             	alert(JSON.stringify(data));
+            }
+            else if(zone == 4 || zone == "4")
+            {
+            	data = response.zoneDetails4;
+            }
+            else if(zone == 5 || zone == "5")
+            {
+            	data = response.zoneDetails5;
+            }
             
-            var zonedetails = JSON.parse(data);
+//             data = response.zoneDetails3;
+		if(data != "" && data != undefined && data != null)
+			{
+            console.log("Data : "+JSON.stringify(data));
+            var zonedetails = data;
             var sampleData = [];
             
             var 		tvcable = 0;
@@ -38,13 +68,13 @@
             
             var 		giveaways = 0;
             var 		misc = 0;
-            
+            var 		importdate = "";
             for(var i in zonedetails)
             {
 	            var 		key = zonedetails[i].key;
 	            var 		state = zonedetails[i].state;
 	            var       city = zonedetails[i].city;
-	            var 		importdate = zonedetails[i].importdate;
+	            importdate = zonedetails[i].importdate;
 	            var 		importtime = zonedetails[i].importtime;
 	            var 		total = zonedetails[i].total;
 // 	            MassMedia
@@ -101,10 +131,13 @@
 //                     { Ads: 'Other', Running: giveaways, Swimming: misc}
                     
                 ];
+            
+            if(sampleData.length > 0)
+            {
             // prepare jqxChart settings
             var settings = {
-                title: "Upto till Date Overview",
-                description: "Overview of Activities",
+                title: "Upto till date  Overview",
+                description: "("+importdate+")",
                 enableAnimations: true,
                 showLegend: true,
                 padding: { left: 5, top: 5, right: 5, bottom: 5 },
@@ -165,8 +198,16 @@
                         }
                     ]
             };
+            
             // setup the chart
             $('#chartContainer').jqxChart(settings);
+            }
+			}
+            }
+            catch(e)
+            {
+            	console.log("Exception in chart : "+e);
+            }
         });
     </script>
 <style type="text/css">
@@ -217,35 +258,32 @@
             <h5><strong> Filter Ad Campaign Details:</strong></h5>
             <div class="col-md-2">
                 <div class="dropdown">
-                  <button class="btn btn-default dropdown-toggle fix" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  Select Activity
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">Mass Media</a></li>
-                    <li><a href="#">Shop Display</a></li>
-                    <li><a href="#">Direct Central pgm</a></li>
-                    <li><a href="#">Schemes</a></li>
-                    <li><a href="#">Others</a></li>
-                </ul>
-            </div>
-            </div><!--/col-md-3-->
-            <div class="col-md-2">
-                <div class="dropdown">
-                <select class="form-control textbox"  placeholder="Filter By Zone">
-										<option value="0">Filter By Zone</option>
-										<option value="1">Central</option>
-										<option value="2">East</option>
-										<option value="3">West</option>
-										<option value="4">North</option>
-										<option value="5">South</option>
-														
+                <select class="form-control textbox"  placeholder="Filter By Activity" id="activityid">
+										<option value="0">Filter By Activity</option>
+										<option value="1">Mass Media</option>
+										<option value="2">Shop Display</option>
+										<option value="3">Direct Central pgm</option>
+										<option value="4">Schemes</option>
+										<option value="5">Others</option>
 			</select>
             </div>
             </div><!--/col-md-3-->
+<!--             <div class="col-md-2"> -->
+<!--                 <div class="dropdown"> -->
+<!--                 <select class="form-control textbox"  placeholder="Filter By Zone"> -->
+<!-- 										<option value="0">Filter By Zone</option> -->
+<!-- 										<option value="1">Central</option> -->
+<!-- 										<option value="2">East</option> -->
+<!-- 										<option value="3">West</option> -->
+<!-- 										<option value="4">North</option> -->
+<!-- 										<option value="5">South</option> -->
+														
+<!-- 			</select> -->
+<!--             </div> -->
+<!--             </div>/col-md-3 -->
             <div class="col-md-2">
                 <div class="dropdown">
-                    <select class="form-control textbox"  placeholder="Filter By City">
+                    <select class="form-control textbox"  placeholder="Filter By City" id="cityid" onchange="loadFilteredData()">
                     <option value="0">Filter By City</option>
                     <option value="43">w1-Mumbai</option>
                     <option value="44">w2-Thane/Palghar</option>
@@ -271,7 +309,28 @@
             </div><!--/col-md-3-->
         </div><!--/row-->
       
-                
+<!--                 ******************************************************************************** -->
+
+<div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header">
+                   Overview of <label id="activityFilter">All Media</label>
+                </h3>
+                <ol class="breadcrumb">
+                    <li><a href="index.jsp">Home</a>
+                    </li>
+                    <li class="active">Mass Media</li>
+                </ol>
+            </div>
+            </div>
+        <!-- /.row -->
+<div class="container">
+	
+	<div id='chartContainer1' style="width:100%; height:500px"/>
+
+</div>
+
+<!--                 ******************************************************************************** -->
             </div>
 
 </body>

@@ -13,11 +13,11 @@
     <script type="text/javascript">
         $(document).ready(function () {
             
-        	var data = [{'Category' : 'Dealer',	'Date' :'1/12/2016',	'Name' : 'Ram',	'Email' :'ram@gmail.com',	'Mobile' :'1234567890',	'Zone' :'west',	'State' :'maharashtra',	'City' :'mumbai'},
-        	            {'Category' : 'Dealer',	'Date' :'1/12/2016',	'Name' : 'Sham',	'Email' :'ram@gmail.com',	'Mobile' :'1234567890',	'Zone' :'west',	'State' :'maharashtra',	'City' :'mumbai'},
-        	            {'Category' : 'Dealer',	'Date' :'1/12/2016',	'Name' : 'Rahul',	'Email' :'ram@gmail.com',	'Mobile' :'1234567890',	'Zone' :'west',	'State' :'maharashtra',	'City' :'mumbai'},
-        	            {'Category' : 'Dealer',	'Date' :'1/12/2016',	'Name' : 'Sunil',	'Email' :'ram@gmail.com',	'Mobile' :'1234567890',	'Zone' :'west',	'State' :'maharashtra',	'City' :'mumbai'},
-        	            {'Category' : 'Dealer',	'Date' :'1/12/2016',	'Name' : 'Deva',	'Email' :'ram@gmail.com',	'Mobile' :'1234567890',	'Zone' :'west',	'State' :'maharashtra',	'City' :'mumbai'}
+        	var data = [{'Category' : 'Dealer',	'Date' :'2016-12-01',	'Name' : 'Ram',	'Email' :'ram@gmail.com',	'Mobile' :'1234567890',	'Zone' :'west',	'State' :'maharashtra',	'City' :'mumbai'},
+        	            {'Category' : 'Dealer',	'Date' :'2016-12-01',	'Name' : 'Sham',	'Email' :'ram@gmail.com',	'Mobile' :'1234567890',	'Zone' :'west',	'State' :'maharashtra',	'City' :'mumbai'},
+        	            {'Category' : 'Dealer',	'Date' :'2016-12-01',	'Name' : 'Rahul',	'Email' :'ram@gmail.com',	'Mobile' :'1234567890',	'Zone' :'west',	'State' :'maharashtra',	'City' :'mumbai'},
+        	            {'Category' : 'Dealer',	'Date' :'2016-12-01',	'Name' : 'Sunil',	'Email' :'ram@gmail.com',	'Mobile' :'1234567890',	'Zone' :'west',	'State' :'maharashtra',	'City' :'mumbai'},
+        	            {'Category' : 'Dealer',	'Date' :'2016-12-01',	'Name' : 'Deva',	'Email' :'ram@gmail.com',	'Mobile' :'1234567890',	'Zone' :'west',	'State' :'maharashtra',	'City' :'mumbai'}
         	            ];
 
         	var source =
@@ -26,8 +26,8 @@
                 dataType: "json",
                 dataFields: [
                      { name: 'Name', type: 'string' },
-                     { name: 'Mobile No', type: 'number' },
-                     { name: 'Date', type: 'date' },
+                     { name: 'Mobile', type: 'string' },
+                     { name: 'Date', type: 'string' },
                      { name: 'Email', type: 'string' },
                      { name: 'City', type: 'string' },
                      { name: 'State', type: 'sting' },
@@ -36,6 +36,12 @@
                      { name: 'Address', type: 'string' }
                 ], 
             };
+        	
+        	var imagerenderer = function(row, datafield, value)
+    		{
+    			return '<div style="text-align: center; margin-top: 3px;"><img src="images/View.gif" style="cursor:pointer; height:20px; width:20px;" onclick=""/></div>';
+    		};
+    		
             var dataAdapter = new $.jqx.dataAdapter(source);
             $("#dataTable").jqxGrid(
             {
@@ -51,11 +57,20 @@
                   { text: 'Name', cellsAlign: 'center', align: 'center', dataField: 'Name', width: '20%' },
                   { text: 'Date', cellsAlign: 'center', align: 'center', dataField: 'Date', width: '20%' },
                   { text: 'Zone', cellsAlign: 'center', align: 'center', dataField: 'Zone', width: '10%' },
-                  { text: 'Category', cellsAlign: 'center', align: 'center', dataField: 'Category', width: '20%' },
+                  { text: 'Category', cellsAlign: 'center', align: 'center', dataField: 'Category', width: '20%', hidden:true  },
                   { text: 'State', cellsAlign: 'center', align: 'center', dataField: 'State', width: '15%' },
-                  { text: 'Email', cellsAlign: 'center', align: 'center', dataField: 'Email', width: '15%', hidden:true },
-                  { text: 'Contact Num', cellsAlign: 'center', align: 'center', dataField: 'Mobile', width: '15%' , hidden:true},
-                  { text: 'City', cellsAlign: 'center', align: 'center', dataField: 'City',width: '15%' }
+                  { text: 'Email', cellsAlign: 'center', align: 'center', dataField: 'Email', width: '15%'},
+                  { text: 'Contact Num', cellsAlign: 'center', align: 'center', dataField: 'Mobile', width: '15%'},
+                  { text: 'City', cellsAlign: 'center', align: 'center', dataField: 'City',width: '15%' , hidden:true },
+                  {
+                		text : "View Order",
+                		menu : false,
+                		sortable : false,
+                		filterable : false,
+                		showfilterrow : false,
+                		cellsalign : "center",
+                		width : "5%",
+                		cellsrenderer : imagerenderer}
                 ]
             });
             
@@ -151,7 +166,7 @@
             <div style='float: left;'>
                 <input type="button" value="Export to Excel" id='excelExport' />
             </div>
-            <div style='margin-left: 10px; float: left;'>
+            <div style='margin-left: 10px; float: left;display:none;'>
                 <input type="button" value="Export to XML" id='xmlExport' />
             </div>
             <div style='margin-left: 10px; float: left;'>
@@ -163,7 +178,7 @@
             <div style='margin-left: 10px; float: left;'>
                 <input type="button" value="Export to HTML" id='htmlExport' />
             </div>
-            <div style='margin-left: 10px; float: left;'>
+            <div style='margin-left: 10px; float: left;display:none;'>
                 <input type="button" value="Export to JSON" id='jsonExport' />
             </div>
             <div style='margin-left: 10px; float: left;'>

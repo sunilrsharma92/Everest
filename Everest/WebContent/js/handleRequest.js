@@ -3,8 +3,10 @@ function handleRequest()
 	this.handleLogin = handleLogin;
 	this.handleRegisteration = handleRegisteration;
 	this.handleResetPassword = handleResetPassword;
+	this.handleSubmitReportDetails = handleSubmitReportDetails;
 	this.handleForgotPwd = handleForgotPwd;
 	this.getZoneDetailsRequest = getZoneDetailsRequest;
+	this.getReportsByUserUploaded = getReportsByUserUploaded;
 	function handleLogin(emailLogin, passLogin, userType, otpLogin)
 	{
 		try
@@ -78,6 +80,30 @@ function handleRequest()
 			console.log("handleRequest handleResetPassword Exception ::" + e);
 		}
 	}
+	
+	function handleSubmitReportDetails(selectZone, peopleAtt, peopEnq, totBud, eventDate, eventTime, editor)
+	{
+		try
+		{
+			var report = {};
+			report.selectZone = selectZone;
+			report.peopleAtt = peopleAtt;
+			report.peopEnq = peopEnq;
+			report.totBud = totBud;
+			report.eventDate = eventDate;
+			report.eventTime = eventTime;
+			report.editor = editor;
+			report.command = 9001;
+			var strJsonMsgForReport = JSON.stringify(report);
+			handleAllListResponse(strJsonMsgForReport);
+			console.log("handleRequest     handleSubmitReportDetails     strJsonMsgForReport : " + strJsonMsgForReport);
+		}
+		catch (e)
+		{
+			console.log("handleRequest handleSubmitReportDetails Exception ::" + e);
+		}
+	}
+	
 	function getZoneDetailsRequest(action, zoneid, cityid)
 	{
 		try
@@ -94,6 +120,22 @@ function handleRequest()
 		catch (e)
 		{
 			console.log("handleRequest getZoneDetailsRequest Exception ::" + e);
+		}
+	}
+	function getReportsByUserUploaded(key)
+	{
+		try
+		{
+			var getReportsDetails = {};
+			getReportsDetails.command = 1059;
+			getReportsDetails.key = key;
+			var strJsonMsgForReportsDetails = JSON.stringify(getReportsDetails);
+			handleAllListResponse(strJsonMsgForReportsDetails);
+			console.log("handleRequest     getReportsDetailsRequest     strJsonMsgForResetPwd : " + strJsonMsgForReportsDetails);
+		}
+		catch (e)
+		{
+			console.log("handleRequest getReportsDetailsRequest Exception ::" + e);
 		}
 	}
 }

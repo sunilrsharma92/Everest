@@ -16,6 +16,7 @@ $(document).ready(function()
 				signUp();
 			}
 		});
+		
 	}
 	catch (e)
 	{
@@ -293,5 +294,20 @@ function emailValidation(value)
 	{
 		return true;
 	}
+
+}
+
+function submitReportDetails()
+{
+	$(".customeroverlay").show();
+	var selectZone = $("#selectZone").val();
+	var peopleAtt = $("#peopleAtt").val();
+	var peopEnq = $("#peopEnq").val();
+	var totBud = $("#totBud").val();
+	var eventDate = $("#eventDate").val();
+	var eventTime = $("#eventTime").val();
+	var editor = $("#editor").val();
+	
+	objhandleRequest.handleSubmitReportDetails(selectZone, peopleAtt, peopEnq, totBud, eventDate, eventTime, editor);
 }
 var objhandleRequest = new handleRequest();

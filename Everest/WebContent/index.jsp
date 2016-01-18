@@ -61,49 +61,49 @@
                         <a class="dropdown-toggle" data-toggle="dropdown">Zones <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a onclick="loadPage('centralzone');">Central Zone</a>
+                                <a onclick="loadPage('centralzone',1);">Central Zone</a>
                             </li>
                             <li>
-                                <a onclick="loadPage('eastzone');">East Zone</a>
+                                <a onclick="loadPage('eastzone',2);">East Zone</a>
                             </li>
                             <li>
-                                <a onclick="loadPage('westzone');">West Zone</a>
+                                <a onclick="loadPage('westzone',3);">West Zone</a>
                             </li>
                             <li>
-                                <a onclick="loadPage('northzone');">North Zone</a>
+                                <a onclick="loadPage('northzone',4);">North Zone</a>
                             </li>
                             <li>
-                                <a onclick="loadPage('southzone');">South Zone</a>
+                                <a onclick="loadPage('southzone',5);">South Zone</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown">Activities <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a onclick="loadPage('massmedia');">Mass Media</a>
+<!--                     <li class="dropdown"> -->
+<!--                         <a class="dropdown-toggle" data-toggle="dropdown">Activities <b class="caret"></b></a> -->
+<!--                         <ul class="dropdown-menu"> -->
+<!--                             <li> -->
+<!--                                 <a onclick="loadPage('massmedia');">Mass Media</a> -->
                                 
-                            </li>
-                            <li>
-                                <a onclick="loadPage('shopdisplay');">Shop Display</a>
-                            </li>
-                            <li>
-                                <a onclick="loadPage('directcentral');">Direct Central Pgm</a>
-                            </li>
-                            <li>
-                                <a onclick="loadPage('schemes');">Schemes</a>
-                            </li>
-                            <li>
-                                <a onclick="loadPage('other');">Others</a>
-                            </li>
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a onclick="loadPage('shopdisplay');">Shop Display</a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a onclick="loadPage('directcentral');">Direct Central Pgm</a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a onclick="loadPage('schemes');">Schemes</a> -->
+<!--                             </li> -->
+<!--                             <li> -->
+<!--                                 <a onclick="loadPage('other');">Others</a> -->
+<!--                             </li> -->
                             
-                        </ul>
+<!--                         </ul> -->
+<!--                     </li> -->
+                    <li>
+                        <a onclick="loadPage('datatable',0);">DataTable</a>
                     </li>
                     <li>
-                        <a onclick="loadPage('datatable');">DataTable</a>
-                    </li>
-                    <li>
-                        <a onclick="loadPage('impact');">Impact</a>
+                        <a onclick="loadPage('impact',0);">Impact</a>
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown">Corporate Communication <b class="caret"></b></a>
@@ -133,10 +133,10 @@
 <!--                                 <a onclick="loadPage('profile');">Profile</a> -->
 <!--                             </li> -->
                             <li>
-                                <a onclick="loadPage('addCampaign');"><span class="glyphicon glyphicon-plus"></span>  Add Campaign</a>
+                                <a onclick="loadPage('addCampaign',0);"><span class="glyphicon glyphicon-plus"></span>  Add Campaign</a>
                             </li>
                             <li>
-                                <a onclick="loadPage('viewCampaign');"><span class="glyphicon glyphicon-retweet"></span>  View Campaign</a>
+                                <a onclick="loadPage('viewCampaign',0);"><span class="glyphicon glyphicon-retweet"></span>  View Campaign</a>
                             </li>
                             <li>
                                 <a href="Login.jsp"><span class="glyphicon glyphicon-log-out"></span>  Logout</a>
@@ -145,7 +145,7 @@
                         </ul>
                     </li>
                     <li>
-                                <a onclick="loadPage('help');"><span class="glyphicon glyphicon-question-sign "></span> Help</a>
+                                <a onclick="loadPage('help',0);"><span class="glyphicon glyphicon-question-sign "></span> Help</a>
                     </li>
                 </ul>
             </div>
