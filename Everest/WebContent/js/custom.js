@@ -321,6 +321,7 @@ function loadPage(id, zoneid)
 		objhandleRequest.getReportsByUserUploaded(key);
 	}
 	
+	
 	$('#subHeadding').empty();
 //	$('#subHeadding').append(text);
 	$('#subHeadding').hide();

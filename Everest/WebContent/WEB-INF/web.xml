@@ -38,7 +38,7 @@
   <context-param>
     <param-name>password</param-name>
 <!--     <param-value>rahulm@2015</param-value> -->
-    <param-value>NaN</param-value>
+    <param-value>root</param-value>
   </context-param>
 <!--   Registerion msg template -->
 

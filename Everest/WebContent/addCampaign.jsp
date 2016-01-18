@@ -1,18 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>Everest Impact-West Zone</title>
-</head>
-
-<body>
     <div class="container">
 
         <!-- Marketing Icons Section -->
@@ -42,14 +30,13 @@
         <table>
         	
         	<tr><td> Zone: </td><td>
-        	<select class="form-control textbox"  placeholder="Filter By Zone">
+        	<select class="form-control textbox"  placeholder="Filter By Zone" id="selectZone">
 										<option value="0">Select Zone</option>
 										<option value="1">Central</option>
 										<option value="2">East</option>
 										<option value="3">West</option>
 										<option value="4">North</option>
 										<option value="5">South</option>
-														
 			</select>
 			</td></tr>
 <!--         	<tr><td> City: </td><td> -->
@@ -72,12 +59,16 @@
 <!--                     <option value="58">w16-Vidarbha</option> -->
 <!--                  </select> -->
 <!-- 			</td></tr> -->
-           <tr><td> Event Date: </td><td><input class="form-control " type="text" ></td></tr>
+			 <tr><td> Event Date: </td><td><input class="form-control " type="text" id="eventDate"></td></tr>
+<!--            <tr><td> Event Time: </td><td><input class="form-control" id="eventTime" ></td></tr> -->
+            <tr><td>Total People Attended:</td><td> <input class="form-control " id="peopleAtt" type="text"></td></tr>
+            <tr><td>Total People Enquiry:</td><td> <input class="form-control " id="peopEnq" type="text"></td></tr>
+            <tr><td>Total Budget:</td><td> <input class="form-control " id="totBud" type="text"></td></tr>
            <tr>
            <td> Event Time: </td>
            <td>
-           <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
-				<input type="text" class="form-control" value="13:14">
+           <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true" >
+				<input type="text" class="form-control" value="13:14" id="eventTime">
 				<span class="input-group-addon">
 					<span class="glyphicon glyphicon-time"></span>
 				</span>
@@ -85,9 +76,6 @@
 			
 			</td>
 			</tr>
-            <tr><td>Total People Attended:</td><td> <input class="form-control " type="text"></td></tr>
-            <tr><td>Total People Enquiry:</td><td> <input class="form-control " type="text"></td></tr>
-            <tr><td>Total Budget:</td><td> <input class="form-control " type="text"></td></tr>
             </table>
          </div>
             
@@ -99,34 +87,81 @@
           
     <textarea id="editor"></textarea>
         
-    </textarea>
          </div><!--/row--> 
-         <div class="row well">
-         <div class="col-md-2">
-             <strong>Upload images:</strong>
-         </div><!--/col-md-3-->
-          <div class="col-md-3">
-             <span class="btn btn-default btn-file">Browse <input type="file"></span>
-         </div><!--/col-md-3-->
-         <div class="col-md-1">
-             
-         </div><!--/col-md-1-->
-
-          <div class="col-md-2">
-             <strong>Upload excel data:</strong>
-         </div><!--/col-md-3--> 
-         <div class="col-md-3">
-             <span class="btn btn-default btn-file">Browse <input type="file"></span>
-         </div><!--/col-md-3-->
-             
-             
-             
-         </div><!--/row--> 
-        *On submitting the Branch Manage will get notified via email and sms.<input type="button" name="Submit" value="Submit Report">
+         
+         <form method="post" action="UploadServlet" id="uploadFile" enctype="multipart/form-data">
+            Select file to upload for Image: <input type="file" name="fileName"  id="fileName"/>
+            <br/><br/>
+            <input type="submit" value="Upload" id="upldBtn" style="display:none"/>
+            
+            
+            <script type="text/javascript" src="js/jquery.form.js"></script>
+			<script type="text/javascript">
+						$(document).ready(function(){
+							try
+							{
+							$("#fileName").change(function()
+							{
+								$(".indexoverlay").show();
+								$("#upldBtn").trigger("click");
+							});
+							
+							$('#uploadFile').ajaxForm({
+							success : function (msg)
+							{
+								console.log("Successs ");
+							}
+						});
+							}
+							catch (e) 
+							{
+								console.log("Exception in uploading file on jsp : "+e);
+							}
+							
+						});
+						
+			</script>
+            
+        </form>
+         <form method="post" action="UploadServlet" id="uploadFileExcel" enctype="multipart/form-data">
+            Select file to upload for Excel: <input type="file" name="fileNameExcel"  id="fileNameExcel"/>
+            <br/><br/>
+            <input type="submit" value="Upload" id="upldBtnExcel" style="display:none"/>
+            
+            
+            <script type="text/javascript" src="js/jquery.form.js"></script>
+			<script type="text/javascript">
+						$(document).ready(function(){
+							try
+							{
+							$("#fileNameExcel").change(function()
+							{
+								$(".indexoverlay").show();
+								$("#upldBtnExcel").trigger("click");
+							});
+							
+							$('#uploadFileExcel').ajaxForm({
+							success : function (msg)
+							{
+								console.log("Successs ");
+							}
+						});
+							}
+							catch (e) 
+							{
+								console.log("Exception in uploading file on jsp for Excel: "+e);
+							}
+							
+						});
+						
+			</script>
+            
+        </form>
+         
+        *On submitting the Branch Manage will get notified via email and sms.<input type="button" onclick="submitReportDetails();" id="submitReport" name="Submit" value="Submit Report">
+        </div><!--/row--> 
         
-        
-</div>
-               <script type="text/javascript">
+     <script type="text/javascript">
         $(document).ready(function () {
             $('#editor').jqxEditor({
                 height: "400px",
@@ -137,6 +172,3 @@
             
         });
     </script>
-</body>
-
-</html>

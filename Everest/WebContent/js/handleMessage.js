@@ -224,6 +224,52 @@ function reportsDetailsResponse(response)
 		console.log("zoneDetailsResponse : : Exception : "+e);
 	}
 }
+
+function reportDetailsResponse(response)
+{
+	try
+	{
+		var action = response.status;
+		var statusdesc = response.statusdesc;
+		if(action != 3)
+		{
+			jqueryconform("Message", statusdesc);
+		}
+		else
+		{
+//			location.replace("impact.jsp");
+			console.log("reportDetailsResponse Exception : " + e);	
+		}
+	}
+	catch(e)
+	{
+		console.log("reportDetailsResponse Exception : " + e);	
+	}
+	$(".indexoverlay").show().delay(100).fadeOut();
+}
+
+function uploadExcelImageResponse(response)
+{
+	try
+	{
+		var action = response.status;
+		var statusdesc = response.statusdesc;
+		if(action != 3)
+		{
+			jqueryconform("Message", statusdesc);
+		}
+		else
+		{
+			console.log("uploadExcelImageResponse Exception : " + e);	
+		}
+	}
+	catch(e)
+	{
+		console.log("uploadExcelImageResponse Exception : " + e);	
+	}
+	$(".indexoverlay").show().delay(100).fadeOut();
+}
+
 function handleLoginResponse(response)
 {
 	try

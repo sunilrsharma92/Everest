@@ -1,5 +1,6 @@
 package com.eshop.servlet;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -14,6 +15,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 
+import com.eshop.dao.ConstantValues;
 import com.eshop.dao.ProductInterface;
 import com.eshop.dao.ProductInterfaceImpl;
 import com.eshop.database.utility.IPAddressUtility;
@@ -114,6 +116,7 @@ public class GetProductbyCategoryServlet extends HttpServlet
 		IPAddressUtility ipadd = new IPAddressUtility();
 		JSONObject objjson = new JSONObject();
 		JSONParser objjsonparser = new JSONParser();
+		String strjsonMsgResponse = "";
 		
 		try
 		{
@@ -140,7 +143,23 @@ public class GetProductbyCategoryServlet extends HttpServlet
 				regsmsTemplet1 = regsmsTemplet +"#"+ regis;
 			}
 			
-			String strjsonMsgResponse = getResponse.handleRequestResponse(jsonMsg, command, DBData, regsmsTemplet1);
+			if(command == 9001)
+			{
+				strjsonMsgResponse = getResponse.handleRequestResponse(jsonMsg, 9004, DBData, regsmsTemplet1);
+				
+				JSONObject object = (JSONObject) JSONValue.parse(strjsonMsgResponse);
+				Long status = (Long) object.get("status");
+				
+				if(session.getAttribute("imageUploadPath") != null)
+					regsmsTemplet1 = (String) session.getAttribute("imageUploadPath");// -- save image path as temp variable to avoid some lines of code
+				
+				if(status != null && status == 3L)
+					strjsonMsgResponse = getResponse.handleRequestResponse(jsonMsg, command, DBData, regsmsTemplet1);
+			}
+			else
+			{
+				strjsonMsgResponse = getResponse.handleRequestResponse(jsonMsg, command, DBData, regsmsTemplet1);
+			}
 			
 			JSONObject object = (JSONObject) JSONValue.parse(strjsonMsgResponse);
 			int command1 = ((Long) object.get("command")).intValue();
