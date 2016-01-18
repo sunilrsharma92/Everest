@@ -96,15 +96,27 @@
 </head>
 
 <body class='default'>
+<!-- Marketing Icons Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header">
+                    View my Campaign
+                </h3>
+                <ol class="breadcrumb">
+                    <li><a href="index.jsp">Home</a>
+                    </li>
+                    <li class="active">My Campaign</li>
+                </ol>
+            </div>
+            </div>
+        <!-- /.row -->
 <div class="container">
 <div id="dataTable"></div>
 <div style='margin-top: 20px;'>
             <div style='float: left;'>
                 <input type="button" value="Export to Excel" id='excelExport' />
                 </h3>
-                <ol class="breadcrumb">
-                    <li><a href="index.jsp">Home</a>
-                </ol>
+                
             </div>
             <div style='margin-left: 10px; float: left;'>
                 <input type="button" value="Export to XML" id='xmlExport' />
