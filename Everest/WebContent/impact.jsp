@@ -17,14 +17,16 @@
             </div>
             </div>
         <!-- /.row -->
- <div class="container well " style="width: ; height:; margin-top:20px">
+        <div id="impactDiv">
+        </div>
+ <!-- <div class="container well " style="width: ; height:; margin-top:20px">
  <h4>Dealer meet at Mumbai</h4>
         <div class="row well" style="border:none;">
         
         <div class="col-md-6 ">
 <p><strong><u>Picture:</u></strong></p>
             <img src="https://placehold.it/350x150image">
-        </div><!--/col-md-6-->  
+        </div>/col-md-6  
         <div class="col-md-6 ">
             <p><strong><u>Overview:</u></strong></p>
         <div class="row form-group">
@@ -35,7 +37,7 @@
          </div>
             
             <button style="margin-top:15px;">Read More</button>
-        </div><!--/col-md-6--> 
+        </div>/col-md-6 
         </div>
  </div>
  <div class="container well " style="width: ; height:; margin-top:20px">
@@ -45,7 +47,7 @@
         <div class="col-md-6 ">
 <p><strong><u>Picture:</u></strong></p>
             <img src="https://placehold.it/350x150image">
-        </div><!--/col-md-6-->  
+        </div>/col-md-6  
         <div class="col-md-6 ">
             <p><strong><u>Overview:</u></strong></p>
         <div class="row form-group">
@@ -56,16 +58,16 @@
          </div>
             
             <button style="margin-top:15px;">Read More</button>
-        </div><!--/col-md-6--> 
-        </div>
- </div><div class="container well " style="width: ; height:; margin-top:20px">
+        </div>/col-md-6 
+        </div></div> -->
+ <!-- <div class="container well " style="width: ; height:; margin-top:20px">
  <h4>Dealer meet at Mumbai</h4>
         <div class="row well" style="border:none;">
         
         <div class="col-md-6 ">
 <p><strong><u>Picture:</u></strong></p>
             <img src="https://placehold.it/350x150image">
-        </div><!--/col-md-6-->  
+        </div>/col-md-6  
         <div class="col-md-6 ">
             <p><strong><u>Overview:</u></strong></p>
         <div class="row form-group">
@@ -76,5 +78,5 @@
          </div>
             
             <button style="margin-top:15px;">Read More</button>
-        </div><!--/col-md-6--> 
-        </div>
+        </div>/col-md-6 
+        </div> -->

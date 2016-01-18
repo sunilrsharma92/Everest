@@ -167,30 +167,32 @@ public class CommonMethodImpl {
 		return 0;
 	}*/
 	
-	public static JSONObject getZoneDetails( int intervalCount, 
+	public static JSONArray getZoneDetails( int intervalCount, 
 																				PreparedStatement ps, 
 																				Connection conn, 
 																				ResultSet rs, 
-																				JSONArray jsonarray1, 
-																				JSONObject parentjson, 
 																				String action, 
 																				long zoneid, 
 																				long cityid)
 	{
+		JSONObject jsonObj = new JSONObject();
+		JSONArray  jsonArray = new JSONArray();
+		String getZoneDetailsOfPreviousMonth = "";
 		try
 		{
-			String getZoneDetailsOfPreviousMonth = "";
+			
 			if(action.equalsIgnoreCase(""))
 			{
+				
 				getZoneDetailsOfPreviousMonth = "SELECT * FROM sales_promotion_expenses"+
-						  " WHERE YEAR(import_date) = YEAR(CURRENT_DATE - INTERVAL "+intervalCount+" MONTH)"+
+						  " WHERE zone_id = "+zoneid+" AND YEAR(import_date) = YEAR(CURRENT_DATE - INTERVAL "+intervalCount+" MONTH)"+
 						  " AND MONTH(import_date) = MONTH(CURRENT_DATE - INTERVAL "+intervalCount+" MONTH)";
 			}
 			else if(!action.equalsIgnoreCase(""))
 			{
 				getZoneDetailsOfPreviousMonth = "SELECT "+action+" FROM sales_promotion_expenses"+
 						  " WHERE YEAR(import_date) = YEAR(CURRENT_DATE - INTERVAL "+intervalCount+" MONTH)"+
-						  " AND MONTH(import_date) = MONTH(CURRENT_DATE - INTERVAL "+intervalCount+" MONTH)";
+						  " AND MONTH(import_date) = MONTH(CURRENT_DATE - INTERVAL "+intervalCount+" MONTH) and zone_id = "+zoneid+"";
 			}
 					System.out.println("getZoneDetailsOfPreviousMonth : "+getZoneDetailsOfPreviousMonth);
 					ps = conn.prepareStatement(getZoneDetailsOfPreviousMonth);
@@ -201,6 +203,8 @@ public class CommonMethodImpl {
 						{
 							JSONObject childjson1 = new JSONObject();
 							childjson1.put("key", rs.getLong("sales_promotion_expenses_key"));
+							childjson1.put("zoneid", rs.getString("zone_id"));
+							childjson1.put("reportid", rs.getString("report_id"));
 							childjson1.put("state", rs.getString("state_ref"));
 							childjson1.put("city", rs.getString("city_ref"));
 							childjson1.put("tvcable", rs.getString("tv_cable"));
@@ -221,11 +225,11 @@ public class CommonMethodImpl {
 							childjson1.put("importdate", rs.getString("import_date"));
 							childjson1.put("total", rs.getFloat("total"));
 							
-							jsonarray1.add(childjson1);
+							jsonArray.add(childjson1);
 						}
 					
-					parentjson.put("zoneDetails", jsonarray1);
-					return parentjson;
+//						jsonObj.put("zoneDetails"+zoneid+"", jsonArray);
+					return jsonArray;
 					}
 					else
 					{
@@ -234,7 +238,7 @@ public class CommonMethodImpl {
 							intervalCount++;
 							if(intervalCount != 6)
 							{
-								getZoneDetails(intervalCount, ps, conn, rs, jsonarray1, parentjson, action, zoneid, cityid);
+								getZoneDetails(intervalCount, ps, conn, rs, action, zoneid, cityid);
 							}
 							else
 							{
@@ -250,6 +254,14 @@ public class CommonMethodImpl {
 		catch(Exception e)
 		{
 			e.printStackTrace();
+		}
+		finally
+		{
+			System.out.println("getZoneDetailsOfPreviousMonth : "+getZoneDetailsOfPreviousMonth);
+			rs = null;
+			ps = null;
+			jsonObj = null;
+			getZoneDetailsOfPreviousMonth = null;
 		}
 		return null;
 }

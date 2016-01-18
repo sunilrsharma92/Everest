@@ -52,26 +52,26 @@
 														
 			</select>
 			</td></tr>
-        	<tr><td> City: </td><td>
-        	<select class="form-control textbox"  placeholder="Select City">
-                    <option value="43">w1-Mumbai</option>
-                    <option value="44">w2-Thane/Palghar</option>
-                    <option value="45">w3-Raigad</option>
-                    <option value="46">w4-Nasik/Ahmednagar</option>
-                    <option value="47">w5-Pune/Solapur</option>
-                    <option value="48">w6-kolapur/Satara</option>
-                    <option value="49">w7-Aurangabad</option>
-                    <option value="50">w8-Ratnagiri/Sindhudurg</option>
-                    <option value="51">w9-Dhule/Jalgaon/Nandurbar</option>
-                    <option value="52">w10-Valsad</option>
-                    <option value="53">w11-Ahmedabad</option>
-                    <option value="54">w12-Saurashtra</option>
-                    <option value="55">w13-Surat</option>
-                    <option value="56">w14-Baroda</option>
-                    <option value="57">w15-Goa</option>
-                    <option value="58">w16-Vidarbha</option>
-                 </select>
-			</td></tr>
+<!--         	<tr><td> City: </td><td> -->
+<!--         	<select class="form-control textbox"  placeholder="Select City"> -->
+<!--                     <option value="43">w1-Mumbai</option> -->
+<!--                     <option value="44">w2-Thane/Palghar</option> -->
+<!--                     <option value="45">w3-Raigad</option> -->
+<!--                     <option value="46">w4-Nasik/Ahmednagar</option> -->
+<!--                     <option value="47">w5-Pune/Solapur</option> -->
+<!--                     <option value="48">w6-kolapur/Satara</option> -->
+<!--                     <option value="49">w7-Aurangabad</option> -->
+<!--                     <option value="50">w8-Ratnagiri/Sindhudurg</option> -->
+<!--                     <option value="51">w9-Dhule/Jalgaon/Nandurbar</option> -->
+<!--                     <option value="52">w10-Valsad</option> -->
+<!--                     <option value="53">w11-Ahmedabad</option> -->
+<!--                     <option value="54">w12-Saurashtra</option> -->
+<!--                     <option value="55">w13-Surat</option> -->
+<!--                     <option value="56">w14-Baroda</option> -->
+<!--                     <option value="57">w15-Goa</option> -->
+<!--                     <option value="58">w16-Vidarbha</option> -->
+<!--                  </select> -->
+<!-- 			</td></tr> -->
            <tr><td> Event Date: </td><td><input class="form-control " type="text" ></td></tr>
            <tr>
            <td> Event Time: </td>

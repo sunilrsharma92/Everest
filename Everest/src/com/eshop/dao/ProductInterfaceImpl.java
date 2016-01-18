@@ -563,18 +563,35 @@ public class ProductInterfaceImpl implements ProductInterface
 						/*getZoneDetailsOfCurrentMonth  = "select * from sales_promotion_expenses"+
 																					  "where import_date >= LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL 1 MONTH"+ 
 																					  "AND import_date < LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY";*/
-						parentjson = CommonMethodImpl.getZoneDetails(intervalCount, ps, conn, rs, jsonarray1, parentjson,action, zoneid, cityid);
-						
-						if(parentjson != null)
-						{
-							parentjson = CommonMethodImpl.putSuccessJson(parentjson, 2057);
-						}
-						else
-						{
-							parentjson = CommonMethodImpl.putFailedJson(parentjson, command);
-							parentjson.put("statusdesc", "No reports for last 6 month found in our record.");
-						}
-
+						String getZone = "select zone_id, zone_name FROM zone";
+							
+							ps1 = conn.prepareStatement(getZone);
+							rs1 = ps1.executeQuery();
+							if (rs1 != null)
+							{
+									while(rs1.next())
+									{
+										zoneid = rs1.getLong("zone_id");
+										JSONArray arr = new JSONArray();
+										System.out.println("zoneid : "+zoneid+"\n action : "+action);
+										arr = CommonMethodImpl.getZoneDetails(intervalCount, ps, conn, rs, action, zoneid, cityid);
+										if(arr.size() > 0)
+										{
+											parentjson.put("zoneDetails"+zoneid+"", arr);
+										}
+										
+										System.out.println("Output : "+parentjson.toString());
+									}
+										if(parentjson != null)
+										{
+											parentjson = CommonMethodImpl.putSuccessJson(parentjson, 2057);
+										}
+										else
+										{
+											parentjson = CommonMethodImpl.putFailedJson(parentjson, command);
+											parentjson.put("statusdesc", "No reports for last 6 month found in our record.");
+										}
+							}
 						output = parentjson.toString();
 						System.out.println("output ::::::::: "+output);
 						return output;
@@ -618,6 +635,59 @@ public class ProductInterfaceImpl implements ProductInterface
 						// ////System.out.println("output ::::::::: "+output);
 						return output;
 
+					}
+					catch (Exception e)
+					{
+						e.printStackTrace();
+						mms.writeLogs("ProductInterfaceImpl handleRequestResponse() " + command + " Exception : " + e, 0);
+					}
+					break;
+					
+				case 1059: // -- Zone Details to filter //
+					try
+					{
+						JSONObject object = (JSONObject) JSONValue.parse(jsonMsg);
+						
+						String key = (String) object.get("key");
+						String getReportsDetails = "select * from report where user_id = "+key+" order by event_date desc" ;
+						ps = conn.prepareStatement(getReportsDetails);
+						rs = ps.executeQuery();
+						if (rs != null)
+						{
+							while (rs.next())
+							{
+								JSONObject childjson1 = new JSONObject();
+								childjson1.put("reportid", rs.getLong("report_id"));
+								childjson1.put("userid", rs.getString("user_id"));
+								childjson1.put("zoneid", rs.getString("zoneid_id"));
+								childjson1.put("totalpeopleattented", rs.getString("total_people_attented"));
+								childjson1.put("totalpeopleenquiry", rs.getString("total_people_enquiry"));
+								childjson1.put("eventimg", rs.getString("event_img"));
+								childjson1.put("totalbudget", rs.getString("total_budget"));
+								childjson1.put("body", rs.getString("body"));
+								childjson1.put("eventdate", rs.getString("event_date"));
+								childjson1.put("eventtime", rs.getString("event_time"));
+								childjson1.put("reportdate", rs.getString("report_date"));
+								childjson1.put("reporttime", rs.getString("report_time"));
+								
+								jsonarray.add(childjson1);
+
+							}
+							parentjson.put("reports", jsonarray);
+							if(parentjson != null)
+							{
+								parentjson = CommonMethodImpl.putSuccessJson(parentjson, 2059);
+							}
+							else
+							{
+								parentjson = CommonMethodImpl.putFailedJson(parentjson, command);
+								parentjson.put("statusdesc", "No reports.");
+							}
+						}
+						output = parentjson.toString();
+						// ////System.out.println("output ::::::::: "+output);
+						return output;
+						
 					}
 					catch (Exception e)
 					{

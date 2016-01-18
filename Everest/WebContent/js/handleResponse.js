@@ -73,6 +73,9 @@ function listResponseHandler(response, command, status)
 						break;
 					case 2058:
 						break;
+					case 2059:
+						reportsDetailsResponse(response);
+						break;
 				}
 				break;
 			case 1:
